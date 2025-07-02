@@ -1,0 +1,22 @@
+baidusearch>=1.0.3
+ipykernel>=6.29.5
+loguru>=0.7.3
+mcp[cli]>=1.7.1
+mkdocs-include-markdown-plugin>=7.1.5
+mkdocs-material>=9.6.14
+mkdocstrings[python]>=0.29.1
+openai>=1.76.2
+pydantic>=2.0.0
+fastapi>=0.100.0
+uvicorn>=0.23.0
+# torch>=2.0.0
+# torchvision>=0.15.0
+numpy>=1.21.0
+opencv-python>=4.5.0
+Pillow>=8.0.0 
+dashscope
+loguru
+pydantic
+opencv-python
+pillow
+numpy 
