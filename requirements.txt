@@ -1,22 +1,41 @@
-baidusearch>=1.0.3
-ipykernel>=6.29.5
-loguru>=0.7.3
-mcp[cli]>=1.7.1
-mkdocs-include-markdown-plugin>=7.1.5
-mkdocs-material>=9.6.14
-mkdocstrings[python]>=0.29.1
-openai>=1.76.2
-pydantic>=2.0.0
-fastapi>=0.100.0
-uvicorn>=0.23.0
-# torch>=2.0.0
-# torchvision>=0.15.0
-numpy>=1.21.0
-opencv-python>=4.5.0
-Pillow>=8.0.0 
-dashscope
-loguru
-pydantic
-opencv-python
-pillow
-numpy 
+# ===== MCP协议通信层 =====
+mcp[cli]>=1.7.1                    # MCP协议核心库
+httpx                              # 异步HTTP客户端
+fastapi>=0.100.0                   # 高性能API框架
+uvicorn>=0.23.0                    # ASGI服务器
+
+# ===== 大视觉模型(LVM)服务 =====
+openai>=1.76.2                     # OpenAI API (GPT-4V等)
+dashscope                          # 阿里云灵积（百炼）模型服务
+
+# ===== 视觉处理与图像分析 =====
+opencv-python>=4.5.0               # 计算机视觉库
+Pillow>=8.0.0                      # 图像处理
+numpy>=1.21.0                      # 数值计算基础
+
+# ===== 数据验证与序列化 =====
+pydantic>=2.0.0                    # 数据校验和类型提示
+
+# ===== 信息检索与知识服务 =====
+baidusearch>=1.0.3                 # 搜索工具
+
+# ===== 开发调试与日志 =====
+loguru>=0.7.3                      # 高级日志记录
+python-dotenv                      # 环境变量管理
+ipykernel>=6.29.5                  # Jupyter内核支持
+
+# ===== 文档生成与维护 =====
+mkdocs-material>=9.6.14            # 现代化文档主题
+mkdocs-include-markdown-plugin>=7.1.5  # Markdown包含插件
+mkdocstrings[python]>=0.29.1       # Python文档字符串支持
+
+# ===== 深度学习框架(按需启用) =====
+# torch>=2.0.0                     # PyTorch深度学习框架
+# torchvision>=0.15.0              # PyTorch视觉模块
+# transformers>=4.30.0             # Hugging Face模型库
+# accelerate>=0.20.0               # 分布式训练加速
+
+# ===== 空间数据处理(扩展) =====
+# astropy>=5.0.0                   # 天体物理学数据处理
+# skyfield>=1.40.0                 # 天文计算与轨道预测
+# scipy>=1.9.0                     # 科学计算库

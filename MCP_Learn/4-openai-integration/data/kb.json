@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is our company's vacation policy?",
+    "answer": "Full-time employees are entitled to 20 paid vacation days per year. Vacation days can be taken after completing 6 months of employment. Unused vacation days can be carried over to the next year up to a maximum of 5 days. Vacation requests should be submitted at least 2 weeks in advance through the HR portal."
+  },
+  {
+    "question": "How do I request a new software license?",
+    "answer": "To request a new software license, please submit a ticket through the IT Service Desk portal. Include the software name, version, and business justification. Standard software licenses are typically approved within 2 business days. For specialized software, approval may take up to 5 business days and may require department head approval."
+  },
+  {
+    "question": "What is our remote work policy?",
+    "answer": "Our company follows a hybrid work model. Employees can work remotely up to 3 days per week. Remote work days must be coordinated with your team and approved by your direct manager. All remote work requires a stable internet connection and a dedicated workspace. Core collaboration hours are 10:00 AM to 3:00 PM EST."
+  },
+  {
+    "question": "How do I submit an expense report?",
+    "answer": "Expense reports should be submitted through the company's expense management system. Include all receipts, categorize expenses appropriately, and add a brief description for each entry. Reports must be submitted within 30 days of the expense. For expenses over $100, additional documentation may be required. All reports require manager approval."
+  },
+  {
+    "question": "What is our process for reporting a security incident?",
+    "answer": "If you discover a security incident, immediately contact the Security Team at security@company.com or call the 24/7 security hotline. Do not attempt to investigate or resolve the incident yourself. Document what you observed, including timestamps and affected systems. The Security Team will guide you through the incident response process and may need your assistance for investigation."
+  }
+]
