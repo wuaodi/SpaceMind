@@ -1,0 +1,67 @@
+# ===== Environment Configuration File =====
+# python 3.10
+
+# ===== AirSim Simulation and Control =====
+airsim==1.8.1                       # AirSim Python API
+msgpack-rpc-python==0.4.1           # AirSim RPC library dependency
+msgpack-python==0.5.6               # AirSim message packing library dependency
+
+# ===== MCP Protocol Communication Layer =====
+mcp[cli]>=1.7.1                     # MCP protocol core library
+httpx                               # Asynchronous HTTP client
+fastapi>=0.100.0                    # High-performance API framework
+uvicorn>=0.23.0                     # ASGI server
+redis>=6.1.1                        # Redis communication
+
+# ===== Large Vision Model (LVM) Services =====
+openai>=1.76.2                      # OpenAI API (GPT-4V etc.)
+dashscope                           # Alibaba Cloud DashScope model service
+
+# ===== Vision Processing and Image Analysis =====
+opencv-python>=4.10.0.84            # Computer vision library
+opencv-contrib-python>=4.10.0.84    # OpenCV extended functionality
+Pillow>=10.4.0                      # Image processing
+numpy>=1.24.4                       # Numerical computation foundation
+
+# ===== Data Visualization and Analysis =====
+matplotlib>=3.7.5                   # Data visualization
+contourpy>=1.1.1                    # matplotlib dependency
+cycler>=0.12.1                      # matplotlib dependency
+fonttools>=4.57.0                   # matplotlib dependency
+kiwisolver>=1.4.7                   # matplotlib dependency
+pyparsing>=3.1.4                    # matplotlib dependency
+python-dateutil>=2.9.0              # Date and time processing
+
+# ===== Data Validation and Serialization =====
+pydantic>=2.0.0                     # Data validation and type hints
+
+# ===== Information Retrieval and Knowledge Services =====
+baidusearch>=1.0.3                  # Search tools
+
+# ===== Development Debugging and Logging =====
+loguru>=0.7.3                       # Advanced logging
+python-dotenv                       # Environment variable management
+ipykernel>=6.29.5                   # Jupyter kernel support
+tqdm>=4.67.1                        # Progress bar display
+colorama>=0.4.6                     # Terminal colored output
+
+# ===== Documentation Generation and Maintenance =====
+mkdocs-material>=9.6.14             # Modern documentation theme
+mkdocs-include-markdown-plugin>=7.1.5  # Markdown include plugin
+mkdocstrings[python]>=0.29.1        # Python docstring support
+
+# ===== Python Basic Dependencies =====
+six>=1.17.0                         # Python 2 and 3 compatibility library
+importlib-resources>=6.4.5          # Import resource library
+zipp>=3.20.2                        # importlib-resources dependency
+
+# ===== Deep Learning Framework (Enable as needed) =====
+# torch>=2.0.0                      # PyTorch deep learning framework
+# torchvision>=0.15.0               # PyTorch vision module
+# transformers>=4.30.0              # Hugging Face model library
+# accelerate>=0.20.0                # Distributed training acceleration
+
+# ===== Spatial Data Processing (Extended) =====
+# astropy>=5.0.0                    # Astrophysics data processing
+# skyfield>=1.40.0                  # Astronomical computation and orbit prediction
+# scipy>=1.9.0                      # Scientific computing library 

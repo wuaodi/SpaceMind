@@ -1,0 +1,87 @@
+{
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.3,
+  "SimMode": "Multirotor",
+  "PhysicsEngineName": "ExternalPhysicsEngine",
+  "SegmentationSettings": {
+    "InitMethod": "CommonObjectsRandomIDs",
+    "MeshNamingMethod": "OwnerName",
+    "OverrideExisting": true
+  },
+  "Vehicles": {
+    "service_spacecraft": {
+      "VehicleType": "SimpleFlight",
+      "EnableCollisionPassthrogh": false,
+      "EnableCollisions": true,
+      "AllowAPIAlways": true,
+      "Sensors": {
+        "lidar": {
+          "SensorType": 6,
+          "Enabled": true,
+          "Range": 300,
+          "NumberOfChannels": 256,
+          "RotationsPerSecond": 10,
+          "PointsPerSecond": 10000000,
+          "X": 1,
+          "Y": 0,
+          "Z": 0,
+          "Roll": 0,
+          "Pitch": 0,
+          "Yaw": 0,
+          "VerticalFOVUpper": 20,
+          "VerticalFOVLower": -20,
+          "HorizontalFOVStart": -20,
+          "HorizontalFOVEnd": 20,
+          "DrawDebugPoints": false,
+          "DataFrame": "SensorLocalFrame"
+        }
+      },
+      "Cameras": {
+        "cam0": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 1024,
+              "Height": 1024,
+              "FOV_Degrees": 50,
+              "TargetGamma": 1.0
+            },
+            {
+              "ImageType": 5,
+              "Width": 1024,
+              "Height": 1024,
+              "FOV_Degrees": 50,
+              "TargetGamma": 1.0
+            }
+          ],
+          "X": 1,
+          "Y": 0,
+          "Z": 0,
+          "Roll": 0,
+          "Pitch": 0,
+          "Yaw": 0.0
+        }
+      },
+      "X": 0,
+      "Y": 0,
+      "Z": 0,
+      "Pitch": 0,
+      "Roll": 0,
+      "Yaw": 0
+    }
+  },
+  "SubWindows": [
+    {
+      "WindowID": 0,
+      "ImageType": 0,
+      "CameraName": "cam0",
+      "Visible": true
+    },
+    {
+      "WindowID": 1,
+      "ImageType": 5,
+      "CameraName": "cam0",
+      "Visible": true
+    }
+  ]
+}
