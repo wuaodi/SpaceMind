@@ -1,6 +1,5 @@
-# SpaceMind
-
-SpaceMind is an intelligent spacecraft autonomous navigation system that enables spacecraft to perform complex on-orbit servicing tasks through vision-based decision making and Large Vision Model (LVM) integration.
+# Demo
+You can find more video demo here
 
 ## Project Overview
 
