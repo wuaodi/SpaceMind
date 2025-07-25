@@ -11,6 +11,67 @@ import json
 import base64
 import math
 
+
+def calculate_camera_pose(x, y, z, pitch, roll, yaw):
+    """
+    根据服务航天器的位姿计算相机的位姿
+    相机安装在服务航天器质心前1m处
+    
+    参数:
+    x, y, z: 服务航天器质心在世界系下的位置 (米)
+    pitch, roll, yaw: 服务航天器的姿态角 (弧度)
+    
+    返回:
+    相机在世界系下的位置和姿态
+    """
+    
+    # 创建服务航天器的位姿
+    spacecraft_position = airsim.Vector3r(x, y, z)
+    
+    # 将欧拉角转换为四元数
+    spacecraft_orientation = airsim.to_quaternion(pitch, roll, yaw)
+    
+    # 定义相机在航天器本体坐标系下的偏移向量 (前方1米)
+    offset_body = airsim.Vector3r(1.0, 0, 0)
+    
+    # 将偏移向量从本体坐标系旋转到世界坐标系
+    # 使用四元数旋转公式
+    qw = spacecraft_orientation.w_val
+    qx = spacecraft_orientation.x_val
+    qy = spacecraft_orientation.y_val
+    qz = spacecraft_orientation.z_val
+    
+    # 旋转矩阵应用到偏移向量
+    offset_world = airsim.Vector3r(
+        (1 - 2 * (qy**2 + qz**2)) * offset_body.x_val + 
+        (2 * (qx * qy - qw * qz)) * offset_body.y_val + 
+        (2 * (qx * qz + qw * qy)) * offset_body.z_val,
+        
+        (2 * (qx * qy + qw * qz)) * offset_body.x_val + 
+        (1 - 2 * (qx**2 + qz**2)) * offset_body.y_val + 
+        (2 * (qy * qz - qw * qx)) * offset_body.z_val,
+        
+        (2 * (qx * qz - qw * qy)) * offset_body.x_val + 
+        (2 * (qy * qz + qw * qx)) * offset_body.y_val + 
+        (1 - 2 * (qx**2 + qy**2)) * offset_body.z_val
+    )
+    
+    # 计算相机在世界系下的位置
+    camera_world_pos = airsim.Vector3r(
+        spacecraft_position.x_val + offset_world.x_val,
+        spacecraft_position.y_val + offset_world.y_val,
+        spacecraft_position.z_val + offset_world.z_val
+    )
+    
+    # 相机的姿态与航天器姿态一致
+    camera_orientation = spacecraft_orientation
+    
+    # 计算相机到原点的距离
+    distance_to_origin = math.sqrt(camera_world_pos.x_val**2 + camera_world_pos.y_val**2 + camera_world_pos.z_val**2)
+
+    
+    return camera_world_pos, camera_orientation, distance_to_origin
+
 class AirSimDataCollector:
     def __init__(self):
         # 连接到AirSim
@@ -30,8 +91,8 @@ class AirSimDataCollector:
         
         # 设置初始位置(米),姿态(弧度制)
         self.current_x = -21  # 注意这个是Airsim世界系下服务航天器位置，相机安装在服务航天器质心前方1米处
-        self.current_y = -5
-        self.current_z = -5
+        self.current_y = 5
+        self.current_z = 5
         self.current_pitch = 0
         self.current_roll = 0
         self.current_yaw = 0
@@ -174,6 +235,8 @@ class AirSimDataCollector:
         # 获取激光雷达数据
         lidar_data = self.client.getLidarData()
         points = lidar_data.point_cloud
+        
+        print(f"LiDAR调试: 获取到 {len(points) if points else 0} 个原始点")
         
         if points:
             # 保存激光雷达点云到文件
@@ -432,10 +495,15 @@ class AirSimDataCollector:
                         self.current_y = new_position.y_val
                         self.current_z = new_position.z_val
                         
-                        # 相机在服务航天器质心x正方向1m处
-                        self.current_x = self.current_x + 1
-                        print(f"更新后的Airsim世界系下位姿: x={self.current_x}, y={self.current_y}, z={self.current_z}, "
-                              f"pitch={self.current_pitch}, roll={self.current_roll}, yaw={self.current_yaw}")
+                        # 使用calculate_camera_pose函数计算正确的相机位姿
+                        # 相机安装在服务航天器质心前方1米处
+                        camera_world_pos, camera_orientation, distance_to_origin = calculate_camera_pose(
+                            self.current_x, self.current_y, self.current_z,
+                            self.current_pitch, self.current_roll, self.current_yaw
+                        )
+                        print(f"更新后的Airsim世界系下相机位姿: x={camera_world_pos.x_val:.3f}, y={camera_world_pos.y_val:.3f}, z={camera_world_pos.z_val:.3f}, "
+                              f"pitch={self.current_pitch:.4f}, roll={self.current_roll:.4f}, yaw={self.current_yaw:.4f}")
+                        print(f"相机距离目标航天器{distance_to_origin:.2f}m")
                     
                     # 设置服务航天器新位姿
                     # 先Yaw（偏航，右偏为正），再Pitch（俯仰，抬头为正），最后Roll（滚转，右滚为正）
