@@ -19,8 +19,8 @@ from datetime import datetime
 # Import simple memory manager
 from simple_memory import SimpleHistoryManager
 # Import configuration class
-from config_approach_vlm import Config
-SERVER_SCRIPT_PATH = "server_en_vlm.py"
+from config_approach import Config
+SERVER_SCRIPT_PATH = "server_en.py"
 
 
 # Apply nest_asyncio to allow nested event loops (needed for Jupyter/IPython)
