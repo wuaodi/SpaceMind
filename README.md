@@ -1,5 +1,8 @@
-# Demo
-You can find more video demo here
+# Demo 📹
+
+[![Demo Video](https://img.shields.io/badge/View%20Demo-SpaceMind%20Agent-blue?style=for-the-badge&logo=youtube)](https://sites.google.com/view/spacemind-agent/)
+
+You can find more video demos here: [SpaceMind Agent Demo Site](https://sites.google.com/view/spacemind-agent/)
 
 ## Project Overview
 
