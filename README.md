@@ -101,6 +101,7 @@ This system simulates autonomous spacecraft navigation using AirSim simulation e
 
 ## Citation
 
+```bibtex
 @inproceedings{wu2025spacemind,
   title={SpaceMind: An MCP-based Agent Architecture Fusing Large and Small Models for On-orbit Servicing},
   author={Wu, Aodi and Han, Haodong and Luo, Xubo and Wan, Xue},
@@ -110,3 +111,4 @@ This system simulates autonomous spacecraft navigation using AirSim simulation e
   month={November},
   url={https://github.com/[your-username]/SpaceMind}
 }
+```
