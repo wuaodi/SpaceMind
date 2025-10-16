@@ -99,63 +99,14 @@ This system simulates autonomous spacecraft navigation using AirSim simulation e
    python host.py
    ```
 
-### Mission Types
+## Citation
 
-#### Perception Mission
-Analyzes target spacecraft to determine type, status, and function.
-- Configuration: `config_perception.py`
-- Focus: Detailed spacecraft analysis and classification
-
-#### Approach Mission  
-Navigates to a specific distance from target spacecraft.
-- Configuration: `config_approach.py` or `config_approach_vlm.py`
-- Focus: Precision navigation and positioning
-
-#### Fly-Around Mission
-Performs orbital maneuvering around target spacecraft.
-- Configuration: `config_around.py`
-- Focus: Complex trajectory planning and execution
-
-## Model Configuration
-
-The system supports multiple AI models:
-
-- **GPT-4.1**: Stable tool calling, fast response
-- **Claude Sonnet 4**: Superior reasoning for complex tasks
-- **GPT-4o**: Strong multimodal capabilities
-
-Select model by modifying `CURRENT_MODEL` in configuration files.
-
-## Coordinate System
-
-The system uses spacecraft body coordinate system:
-- **X-axis**: Forward (+) / Backward (-)
-- **Y-axis**: Right (+) / Left (-)  
-- **Z-axis**: Down (+) / Up (-)
-
-## Safety Features
-
-- Conservative movement strategies
-- Target loss recovery protocols
-- Distance-based safety constraints
-- Mission termination on completion or failure
-
-## Development
-
-### Adding New Tools
-1. Define tool functions in MCP server files
-2. Add appropriate tool documentation and examples
-3. Update configuration prompts as needed
-
-### Customizing Missions
-1. Create new configuration file based on existing templates
-2. Define task-specific prompts and parameters
-3. Update import in `host.py`
-
-## License
-
-This project is provided as-is for research and educational purposes.
-
-## Contributing
-
-Please ensure all API keys and personal information are removed before contributing. 
+@inproceedings{wu2025spacemind,
+  title={SpaceMind: An MCP-based Agent Architecture Fusing Large and Small Models for On-orbit Servicing},
+  author={Wu, Aodi and Han, Haodong and Luo, Xubo and Wan, Xue},
+  booktitle={IAA Conference on AI in and for Space},
+  year={2025},
+  address={Suzhou, China},
+  month={November},
+  url={https://github.com/[your-username]/SpaceMind}
+}
