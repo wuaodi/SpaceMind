@@ -1,10 +1,10 @@
-# Demo 📹
+## Demo 📹
 
 [![Demo Video](https://img.shields.io/badge/View%20Demo-SpaceMind%20Agent-blue?style=for-the-badge&logo=youtube)](https://sites.google.com/view/spacemind-agent/)
 
 You can find more video demos here: [SpaceMind Agent Demo Site](https://sites.google.com/view/spacemind-agent/)
 
-# Paper link
+## Paper link
 
 This paper has been accepted be IAA Conference on AI in and for Space, 2025. You can find here: [SpaceMind Paper](https://drive.google.com/file/d/1ORZX5bIMy7LXtnrhWTbMcCWVaOtxQuqH/view?usp=drive_link )
 
