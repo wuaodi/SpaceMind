@@ -6,7 +6,7 @@ You can find more video demos here: [SpaceMind Agent Demo Site](https://sites.go
 
 ## Paper link
 
-This paper has been accepted be IAA Conference on AI in and for Space, 2025. You can find here: [SpaceMind Paper](https://drive.google.com/file/d/1ORZX5bIMy7LXtnrhWTbMcCWVaOtxQuqH/view?usp=drive_link )
+This paper has been accepted be IAA Conference on AI in and for Space, 2025. You can find here: [SpaceMind Paper](https://www.techrxiv.org/doi/full/10.36227/techrxiv.176184709.92373655/v1)
 
 ## Project Overview
 
