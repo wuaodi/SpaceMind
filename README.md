@@ -2,6 +2,8 @@
 
 **A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing**
 
+> **TODO:** ArXiv paper link & demo video coming soon.
+
 <p align="center">
   <a href="#"><img src="static/icon/arxiv.svg" alt="arXiv" width="16" height="16"></a>
   &nbsp;<a href="#"><b>Paper</b></a>
@@ -115,11 +117,6 @@ python SpaceMind_Lab/run_lab_phase_b_tta.py --task search_approach --mode standa
 ## Conference Version
 
 The conference version of this work has been accepted at the **IAA Conference on AI in and for Space (SPAICE 2025)**. The corresponding code is preserved in the [`SpaceMind_Conference/`](SpaceMind_Conference/) folder.
-
-## TODO
-
-- [ ] ArXiv paper link
-- [ ] Demo video
 
 ## Citation
 
