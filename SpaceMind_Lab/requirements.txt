@@ -1,0 +1,29 @@
+# python 3.10+
+
+# AirSim
+airsim==1.8.1
+msgpack-rpc-python==0.4.1
+msgpack-python==0.5.6
+
+# MCP
+mcp[cli]>=1.7.1
+httpx
+fastapi>=0.100.0
+uvicorn>=0.23.0
+redis>=6.1.1
+
+# LLM/VLM API
+openai>=1.76.2
+dashscope
+nest_asyncio
+
+# Vision
+opencv-python>=4.10.0.84
+Pillow>=10.4.0
+numpy>=1.24.4
+
+# Utils
+python-dotenv
+tqdm>=4.67.1
+pydantic>=2.0.0
+PyYAML>=6.0.2

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SpaceMind: A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing">
+  <meta name="keywords" content="SpaceMind, on-orbit servicing, vision-language model, embodied agent, modular architecture, self-evolution">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpaceMind | Embodied VLM Agent for On-orbit Servicing</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "SpaceMind: A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing",
+    "author": [
+      {"@type": "Person", "name": "Aodi Wu", "url": "https://github.com/wuaodi"},
+      {"@type": "Person", "name": "Haodong Han"},
+      {"@type": "Person", "name": "Xubo Luo", "url": "https://luoxubo.github.io/"},
+      {"@type": "Person", "name": "Ruisuo Wang"},
+      {"@type": "Person", "name": "Shan He"},
+      {"@type": "Person", "name": "Xue Wan", "url": "https://people.ucas.edu.cn/~wanxue"}
+    ],
+    "datePublished": "2026",
+    "image": "static/images/teaser.png",
+    "keywords": ["on-orbit servicing", "vision-language model", "embodied agent", "modular architecture", "self-evolution"],
+    "isAccessibleForFree": true,
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://github.com/wuaodi/SpaceMind"
+    }
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; }
+    .title.is-1 { font-family: 'Google Sans', sans-serif; }
+    .publication-title { font-size: 2rem; font-weight: 700; }
+    .publication-authors { margin-top: 0.5rem; }
+    .author-block { display: inline-block; margin-right: 0.5rem; }
+    .publication-links .button { margin: 0.25rem; }
+    .content figure { margin: 1.5rem auto; text-align: center; }
+    .content figure img { max-width: 100%; }
+    .content figure figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: #555; }
+    section.section { padding: 2rem 1.5rem; }
+    .hero.is-light { background-color: #f5f5f5; }
+    .todo-badge {
+      display: inline-block;
+      background: #ffeaa7;
+      color: #636e72;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .bibtex-box {
+      background: #f5f5f5;
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: pre;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      cursor: pointer;
+      background: #ddd;
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+    }
+    .copy-btn:hover { background: #ccc; }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .highlight-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .highlight-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #3273dc;
+    }
+    .highlight-card .desc {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title publication-title">
+        SpaceMind: A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing
+      </h1>
+
+      <div class="publication-authors">
+        <span class="author-block">Aodi Wu<sup>1,2</sup>,</span>
+        <span class="author-block">Haodong Han<sup>1,2</sup>,</span>
+        <span class="author-block">Xubo Luo<sup>1,2</sup>,</span>
+        <span class="author-block">Ruisuo Wang<sup>2</sup>,</span>
+        <span class="author-block">Shan He<sup>2</sup>,</span>
+        <span class="author-block">Xue Wan<sup>2</sup></span>
+      </div>
+
+      <div class="publication-authors" style="margin-top: 0.3rem; font-size: 0.9rem; color: #666;">
+        <sup>1</sup> University of Chinese Academy of Sciences &nbsp;&nbsp;
+        <sup>2</sup> Technology and Engineering Center for Space Utilization, CAS
+      </div>
+
+      <div class="publication-links" style="margin-top: 1rem;">
+        <a class="button is-rounded is-link is-light" disabled>
+          <span class="icon"><i class="ai ai-arxiv"></i></span>
+          <span>Paper (coming soon)</span>
+        </a>
+        <a class="button is-rounded is-dark" href="https://github.com/wuaodi/SpaceMind">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code</span>
+        </a>
+        <a class="button is-rounded is-warning is-light" href="https://github.com/wuaodi/SpaceMind/tree/main/SpaceMind_Conference">
+          <span class="icon"><i class="fas fa-archive"></i></span>
+          <span>Conference Version</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser -->
+<section class="section">
+  <div class="container">
+    <figure>
+      <img src="static/images/teaser.png" alt="SpaceMind Overview" style="max-width: 900px; margin: 0 auto; display: block;">
+      <figcaption>
+        SpaceMind operates as a VLM-based decision-control hub that perceives through visual sensors, reasons about the current situation, and issues motion and sensor-control commands. It supports three task types across both high-fidelity UE5 simulation (5 satellites, 174 runs) and a physical laboratory (2 satellites, 18 runs).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container" style="max-width: 800px;">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content">
+      <p>
+        Autonomous on-orbit servicing demands embodied agents that perceive through visual sensors, reason about 3D spatial situations, and execute multi-phase tasks over extended horizons. We present <strong>SpaceMind</strong>, a modular and self-evolving vision-language model (VLM) agent framework that decomposes knowledge, tools, and reasoning into three independently extensible dimensions: skill modules with dynamic routing, Model Context Protocol (MCP) tools with configurable profiles, and injectable reasoning-mode skills. An MCP-Redis interface layer enables the same codebase to operate across simulation and physical hardware without modification, and a Skill Self-Evolution mechanism distills operational experience into persistent skill files without model fine-tuning.
+      </p>
+      <p>
+        We validate SpaceMind through <strong>192 closed-loop runs</strong> across five satellites, three task types, and two environments&mdash;a UE5 simulation and a physical laboratory&mdash;deliberately including degraded conditions to stress-test robustness. Under nominal conditions all modes achieve 90&ndash;100% navigation success; under degradation, the Prospective mode uniquely succeeds in search-and-approach tasks where other modes fail. A self-evolution study shows that the agent recovers from failure in four of six groups from a single failed episode, including complete failure to 100% success and inspection scores improving from 12 to 59 out of 100. Real-world validation confirms zero-code-modification transfer to a physical robot with 100% rendezvous success.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights -->
+<section class="section" style="background: #fafafa;">
+  <div class="container" style="max-width: 900px;">
+    <h2 class="title is-3 has-text-centered">Key Results</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <div class="number">192</div>
+        <div class="desc">Closed-loop runs across 5 satellites, 3 task types, and 2 environments</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">90–100%</div>
+        <div class="desc">Navigation success under nominal conditions across all reasoning modes</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">4/6</div>
+        <div class="desc">Groups recover from failure through self-evolution after a single episode</div>
+      </div>
+      <div class="highlight-card">
+        <div class="number">0</div>
+        <div class="desc">Lines of code changed for sim-to-real transfer to a physical robot</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="section">
+  <div class="container" style="max-width: 900px;">
+    <h2 class="title is-3">Architecture</h2>
+    <figure>
+      <img src="static/images/pipeline.png" alt="SpaceMind Architecture" style="max-width: 100%;">
+      <figcaption>
+        SpaceMind architecture. The VLM decision core receives visual observations and context from the skill layer, reasons through one of three modes (Standard, ReAct, Prospective), and issues tool calls via MCP. The Redis message bus decouples the agent from environment-specific backends, enabling the same codebase to operate across UE5 simulation and physical hardware.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Video -->
+<section class="section" style="background: #fafafa;">
+  <div class="container has-text-centered" style="max-width: 800px;">
+    <h2 class="title is-3">Video</h2>
+    <p><span class="todo-badge">Coming soon</span></p>
+    <p style="margin-top: 0.5rem; color: #888;">A demo video showcasing SpaceMind operating in both UE5 simulation and the physical laboratory will be available here.</p>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section">
+  <div class="container" style="max-width: 800px;">
+    <h2 class="title is-3">BibTeX</h2>
+    <div class="bibtex-box" id="bibtex">
+      <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bibtex-text').textContent)">Copy</button>
+<span id="bibtex-text">@article{wu2026spacemind,
+  title={SpaceMind: A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing},
+  author={Wu, Aodi and Han, Haodong and Luo, Xubo and Wang, Ruisuo and He, Shan and Wan, Xue},
+  journal={Acta Astronautica},
+  year={2026},
+  note={Under review}
+}</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" style="padding: 1.5rem;">
+  <div class="container has-text-centered">
+    <p style="font-size: 0.85rem; color: #999;">
+      This page is built on top of the
+      <a href="https://nerfies.github.io/" target="_blank">Academic Project Page Template</a>,
+      adapted from the Nerfies project page.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+{
+  "signal_sources": {
+    "semantic_truth": {
+      "description": "Per-target labels for type, visible components, and mission-relevant semantics.",
+      "visibility_to_agent": false,
+      "typical_use": [
+        "inspection scoring"
+      ]
+    },
+    "lidar_points": {
+      "description": "Point-cloud or range observations from the simulated lidar sensor.",
+      "visibility_to_agent": "optional",
+      "typical_use": [
+        "final distance-band validation"
+      ]
+    },
+    "collision_state": {
+      "description": "Collision counter and contact events from the simulator.",
+      "visibility_to_agent": false,
+      "typical_use": [
+        "hard failure detection"
+      ]
+    }
+  },
+  "global_rules": {
+    "contact_is_failure_for_precontact_tasks": true,
+    "success_requires_collision_free_episode": true,
+    "success_requires_hidden_evaluator_match": true
+  },
+  "evaluation_profiles": {
+    "final_distance_band_success": {
+      "goal_type": "final_distance_band_success",
+      "required_signals": [
+        "lidar_points",
+        "collision_state"
+      ],
+      "success_conditions": {
+        "surface_distance_range_m": [
+          1.0,
+          3.0
+        ],
+        "collision_free": true
+      },
+      "failure_conditions": {
+        "collision": true,
+        "timeout": true,
+        "missing_lidar": true
+      }
+    },
+    "inspection_diagnosis_model_score": {
+      "goal_type": "semantic_model_score",
+      "required_signals": [
+        "semantic_truth"
+      ],
+      "truth_source": {
+        "file": "benchmark_annotation_template.json",
+        "section": "satellites.<target_name>.inspection_labels"
+      },
+      "score_range": [
+        0,
+        100
+      ],
+      "reported_metrics": [
+        "inspection_score"
+      ]
+    }
+  },
+  "task_to_profile": {
+    "rendezvous-hold-front": "final_distance_band_success",
+    "search-then-approach": "final_distance_band_success",
+    "inspection-diagnosis": "inspection_diagnosis_model_score"
+  }
+}

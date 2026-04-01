@@ -1,0 +1,268 @@
+{
+  "capability_dimensions": [
+    "relative_navigation",
+    "hold_stability",
+    "initial_target_acquisition",
+    "local_inspection",
+    "semantic_diagnosis",
+    "recovery",
+    "safe_abort"
+  ],
+  "task_families": {
+    "relative-hold": {
+      "description": "Approach a visible laboratory target and stop at a safe near-distance band.",
+      "coverage": [
+        "relative_navigation",
+        "hold_stability",
+        "safe_abort"
+      ],
+      "primary_metrics": [
+        "success_rate",
+        "collision_rate",
+        "avg_steps",
+        "avg_tool_calls",
+        "final_surface_distance_m"
+      ],
+      "subtasks": [
+        "rendezvous-hold-front"
+      ]
+    },
+    "search-and-approach": {
+      "description": "Search for a target that is initially outside the field of view, then approach to a safe near-distance band.",
+      "coverage": [
+        "relative_navigation",
+        "hold_stability",
+        "initial_target_acquisition",
+        "recovery",
+        "safe_abort"
+      ],
+      "primary_metrics": [
+        "success_rate",
+        "collision_rate",
+        "avg_steps",
+        "avg_tool_calls",
+        "final_surface_distance_m"
+      ],
+      "subtasks": [
+        "search-then-approach"
+      ]
+    },
+    "inspection-diagnosis": {
+      "description": "Inspect the visible target, reason about components and status, and score the final diagnosis against hidden truth labels.",
+      "coverage": [
+        "local_inspection",
+        "semantic_diagnosis"
+      ],
+      "primary_metrics": [
+        "inspection_score",
+        "avg_tool_calls",
+        "avg_sensing_calls"
+      ],
+      "subtasks": [
+        "inspection-diagnosis"
+      ]
+    }
+  },
+  "tool_profiles": {
+    "lab_nav_minimal": {
+      "profile_name": "lab_nav_minimal",
+      "description": "Laboratory baseline profile using only raw image input plus motion and stop commands.",
+      "intended_use": "lab_main_experiment",
+      "allowed_tools": [
+        "set_position",
+        "set_attitude",
+        "terminate_navigation"
+      ]
+    },
+    "lab_nav_with_code": {
+      "profile_name": "lab_nav_with_code",
+      "description": "Laboratory ablation profile that adds execute_code to the raw-image navigation baseline.",
+      "intended_use": "lab_code_ablation",
+      "allowed_tools": [
+        "set_position",
+        "set_attitude",
+        "terminate_navigation",
+        "execute_code"
+      ]
+    }
+  },
+  "tasks": {
+    "rendezvous-hold-front": {
+      "task_family": "relative-hold",
+      "evaluation_profile": "final_distance_band_success",
+      "capability_tags": [
+        "relative_navigation",
+        "hold_stability",
+        "safe_abort"
+      ],
+      "default_tool_profile": "lab_nav_minimal",
+      "benchmark_goal": "final surface distance 1-3m without collision",
+      "supported_tool_profiles": [
+        "lab_nav_minimal",
+        "lab_nav_with_code"
+      ],
+      "user_task": "Mission: The target is already visible. Approach the target conservatively using fresh camera images, keep it observable, and stop once the final distance to the target surface is about 1 meter. If the scene becomes unsafe or ambiguous, terminate instead of gambling on another forward move.",
+      "fallback_dynamic_skills": [
+        "lab-task-approach-front",
+        "lab-navigation-policy"
+      ]
+    },
+    "search-then-approach": {
+      "task_family": "search-and-approach",
+      "evaluation_profile": "final_distance_band_success",
+      "capability_tags": [
+        "relative_navigation",
+        "hold_stability",
+        "initial_target_acquisition",
+        "recovery",
+        "safe_abort"
+      ],
+      "default_tool_profile": "lab_nav_minimal",
+      "benchmark_goal": "target initially out of view, then final surface distance 1-3m without collision",
+      "supported_tool_profiles": [
+        "lab_nav_minimal",
+        "lab_nav_with_code"
+      ],
+      "user_task": "Mission: The target is not initially in view. Search for it with bounded, conservative motion, regain a reliable observation, then approach and stop once the final distance to the target surface is about 1 meter. If the target cannot be recovered safely, terminate with a clear target-lost reason.",
+      "fallback_dynamic_skills": [
+        "lab-task-search-approach",
+        "lab-target-recovery",
+        "lab-navigation-policy"
+      ]
+    },
+    "inspection-diagnosis": {
+      "task_family": "inspection-diagnosis",
+      "evaluation_profile": "inspection_diagnosis_model_score",
+      "capability_tags": [
+        "local_inspection",
+        "semantic_diagnosis"
+      ],
+      "default_tool_profile": "lab_nav_minimal",
+      "benchmark_goal": "model-scored diagnosis against hidden inspection labels",
+      "supported_tool_profiles": [
+        "lab_nav_minimal",
+        "lab_nav_with_code"
+      ],
+      "user_task": "Mission: Inspect the target spacecraft and report: (1) spacecraft type, (2) key visible components with counts, (3) visual appearance (shape, color, size), (4) likely function or mission, (5) operational status. Call terminate_navigation with a diagnosis covering all five aspects.",
+      "fallback_dynamic_skills": [
+        "lab-task-inspection",
+        "lab-navigation-policy"
+      ]
+    }
+  },
+  "modes": {
+    "standard": {
+      "main_extra_skills": []
+    },
+    "react": {
+      "main_extra_skills": [
+        "mode-react"
+      ]
+    },
+    "world_model": {
+      "planner_extra_skills": [
+        "mode-world-model-planner"
+      ],
+      "selector_extra_skills": [
+        "mode-world-model-selector"
+      ]
+    }
+  },
+  "free_task": {
+    "default_tool_profile": "lab_nav_minimal"
+  },
+  "skill_gateway": {
+    "always_on_skills": [
+      "core-foundation"
+    ],
+    "candidate_skills": [
+      "lab-task-approach-front",
+      "lab-task-search-approach",
+      "lab-task-inspection",
+      "lab-navigation-policy",
+      "lab-target-recovery"
+    ],
+    "fallback_skill": "lab-task-search-approach",
+    "max_helper_skills": 2
+  },
+  "experiment_suites": {
+    "experiment_a_same_task_evolution": {
+      "description": "Run one task repeatedly and report 1-5, 6-10, 11-15 segments.",
+      "recommended_runs": 15,
+      "workspace_policy": "single_task_tta",
+      "evaluation_focus": [
+        "same_task_learning_curve",
+        "last5_minus_first5",
+        "mutation_timeline"
+      ]
+    }
+  },
+  "metric_catalog": {
+    "success_rate": {
+      "category": "success",
+      "aggregation": "mean_bool",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "collision_rate": {
+      "category": "safety",
+      "aggregation": "failure_mode_rate",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "avg_steps": {
+      "category": "efficiency",
+      "aggregation": "mean_numeric",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "avg_tool_calls": {
+      "category": "efficiency",
+      "aggregation": "mean_numeric",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "avg_sensing_calls": {
+      "category": "efficiency",
+      "aggregation": "mean_numeric",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "avg_motion_calls": {
+      "category": "efficiency",
+      "aggregation": "mean_numeric",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "duration_seconds": {
+      "category": "efficiency",
+      "aggregation": "mean_numeric",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "learning_gain": {
+      "category": "learning",
+      "aggregation": "window_delta",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "last5_minus_first5": {
+      "category": "learning",
+      "aggregation": "window_delta",
+      "available_from_logs": true,
+      "available_from_evaluator": true
+    },
+    "inspection_score": {
+      "category": "inspection_extra",
+      "aggregation": "mean_numeric",
+      "available_from_logs": false,
+      "available_from_evaluator": true
+    },
+    "final_surface_distance_m": {
+      "category": "navigation_extra",
+      "aggregation": "mean_numeric",
+      "available_from_logs": false,
+      "available_from_evaluator": true
+    }
+  }
+}

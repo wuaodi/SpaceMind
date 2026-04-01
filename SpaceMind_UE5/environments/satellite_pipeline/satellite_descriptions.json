@@ -1,0 +1,689 @@
+{
+  "satellites": [
+    {
+      "name": "ACE",
+      "description": "The ACE robotic spacecraft was launched August 25, 1997, and entered an orbit close to the L1 Lagrangian point (which lies between the Sun and the Earth at a distance of some 1.5 million km from the latter) on December 12, 1997. The data contributes to our understanding of the Sun, its interaction with Earth, and the evolution of the solar system. ACE continues to provide space weather reports and warnings of geomagnetic storms that can disrupt communications on Earth and harm astronauts in space.",
+      "max_diameter_meters": 7.410069227
+    },
+    {
+      "name": "ACRIMSAT",
+      "description": "Launched in December 1999, the mission lasted almost 14 years, until contact was lost on December 13th, 2013. Monitoring the sun's output over a long period can help separate climate change effects of the sun's variance from other effects such as the greenhouse effect.",
+      "max_diameter_meters": 1.798210442
+    },
+    {
+      "name": "ACS3",
+      "description": "The mission’s primary objective is to successfully demonstrate new boom deployment, but once deployed, assessment of sail performance is expected. The solar sail employs the pressure of sunlight for propulsion, eliminating the need for rocket propellant.",
+      "max_diameter_meters": 14.62036228
+    },
+    {
+      "name": "AIM",
+      "description": "",
+      "max_diameter_meters": 17.2140007
+    },
+    {
+      "name": "Aqua",
+      "description": "The Aqua mission collects data about evaporation from the oceans, water vapor in the atmosphere, clouds, precipitation, soil moisture, sea ice, land ice, and snow cover on the land and ice. Additional variables also being measured by Aqua include radiative energy fluxes, aerosols, vegetation cover on the land, phytoplankton and dissolved organic matter in the oceans, and air, land, and water temperatures. Aqua was launched on May 4, 2002, and has six Earth-observing instruments on board, collecting a variety of global data sets. Aqua was originally developed for a six-year design life but has now far exceeded that original goal. It continues transmitting high-quality data from four of its six instruments, AIRS, AMSU, CERES, and MODIS, and reduced quality data from a fifth instrument, AMSR-E. The sixth Aqua instrument, HSB, collected approximately nine months of high quality data but failed in February 2003. Aqua was the first member launched of a group of satellites termed the Afternoon Constellation, or sometimes the A-Train.",
+      "max_diameter_meters": 17.77729988
+    },
+    {
+      "name": "Aquarius",
+      "description": "The Aquarius instrument's surface salinity measurements contributed to a better understanding of ocean dynamics and advancing climate and ocean models, both from season to season and year to year.",
+      "max_diameter_meters": 5.387113333
+    },
+    {
+      "name": "Artemis",
+      "description": "The first in a series of increasingly complex missions, Artemis I was an uncrewed flight test that provided a foundation for human deep space exploration, and demonstrated our commitment and capability to extend human existence to the Moon and beyond. The spacecraft launched on the most powerful rocket in the world and flew farther than any spacecraft built for humans has ever flown, traveling thousands of miles past the moon, then entering a distant retrograde orbit of the moon before returning to Earth.",
+      "max_diameter_meters": 17.53504753
+    },
+    {
+      "name": "Aura",
+      "description": "Aura's instruments measure trace gases in the atmosphere by detecting their unique spectral signatures. MLS observes the faint microwave emissions from rotating and vibrating molecules. HIRDLS  and TES  observe the infrared thermal emissions also due to molecular vibrations and rotations. OMI detects the molecular absorption of backscattered sunlight in the visible and ultraviolet wavelengths.\n\n Horizon viewing (limb) instruments (MLS, TES and HIRDLS slice through the atmosphere, profiling gases. Down-looking instruments (OMI and TES) stare at the Earth. Since MLS looks out the front of the spacecraft, it is the first to profile the atmosphere. The OMI and TES instruments then look at the same air mass as it passes beneath the spacecraft. As the spacecraft then moves on in its orbit, HIRDLS and TES profile the atmosphere again. This unique observing geometry allows the Aura instruments to combine their measurements to get a better picture of the atmospheric chemistry.",
+      "max_diameter_meters": 18.74152565
+    },
+    {
+      "name": "BepiColombo",
+      "description": "",
+      "max_diameter_meters": 29.98451519
+    },
+    {
+      "name": "BioSentinel",
+      "description": "The satellite launched to deep space aboard Artemis I and flew past the Moon in a direction to orbit the Sun. Once the satellite is in position beyond our planet’s protective magnetic field, it will conduct a study of the effects of deep space radiation on a living organism, yeast. Because human cells and yeast cells have many similar biological mechanisms, including DNA damage and repair, BioSentinel’s experiments can help us better understand the radiation risks for long-duration deep space human exploration. BioSentinel will carry living organisms farther into space than ever before. NASA’s Artemis missions at the Moon will prepare humans to travel on increasingly farther and longer-duration missions to destinations like Mars. Results from BioSentinel’s six- to nine-month mission will fill critical gaps in knowledge about the health risks in deep space posed by space radiation.",
+      "max_diameter_meters": 0.867181927
+    },
+    {
+      "name": "CALIPSO",
+      "description": "CALIPSO (Cloud-Aerosol Lidar and Infrared Pathfinder Satellite Observation) combined an active lidar instrument with passive infrared and visible imagers to probe the vertical structure and properties of thin clouds and aerosols over the globe. CALIPSO was launched on April 28, 2006. CALIPSO, along with the CloudSat mission, were highly complementary and together provided new, never-before-seen 3-D perspectives of how clouds and aerosols form, evolve, and affect weather and climate.",
+      "max_diameter_meters": 9.770720482
+    },
+    {
+      "name": "CAPSTONE",
+      "description": "As a precursor for Gateway, a Moon-orbiting outpost that is part of NASA’s Artemis program, CAPSTONE will help reduce risk for future spacecraft by validating innovative navigation technologies and verifying the dynamics of this halo-shaped orbit.",
+      "max_diameter_meters": 1.425685763
+    },
+    {
+      "name": "Cassini_Huygens",
+      "description": "Cassini was one of the most ambitious efforts ever mounted in planetary exploration. A joint endeavor of NASA, ESA (the European Space Agency) and the Italian space agency (ASI), Cassini was a sophisticated robotic spacecraft sent to study Saturn and its complex system of rings and moons in unprecedented detail. Cassini carried a probe called Huygens to the Saturn system. The probe, which was built by ESA, parachuted to the surface of Saturn’s largest moon, Titan, in January 2005—the most distant landing to date in our solar system. Huygens returned spectacular images and other science results during a two-and-a-half-hour descent through Titan’s hazy atmosphere, before coming to rest amid rounded cobbles of ice on a floodplain damp with liquid methane.Cassini completed its initial four-year mission in June 2008 and earned two mission extensions that enabled the team to delve even deeper into Saturn’s mysteries. Key discoveries during its 13 years at Saturn included a global ocean with strong indications of hydrothermal activity within Enceladus, and liquid methane seas on Titan. After 20 years in space — 13 of those years exploring Saturn — Cassini exhausted its fuel supply. And so, to protect moons of Saturn that could have conditions suitable for life, Cassini was sent on a daring final mission that would seal its fate. After a series of nearly two dozen nail-biting dives between the planet and its icy rings, Cassini plunged into Saturn’s atmosphere on Sept. 15, 2017, returning science data to the very end.",
+      "max_diameter_meters": 6.97256279
+    },
+    {
+      "name": "Chandra",
+      "description": "The Chandra X-ray Observatory is part of NASA's ﬂeet of \"Great Observatories\" along with the Hubble Space Telescope, Spitizer Space Telescope and the now deorbited Compton Gamma Ray Observatory.\n The Chandra X-ray Observatory, which was launched by Space Shuttle Columbia in 1999, can better define the hot, turbulent regions of space. This increased clarity can help scientists answer fundamental questions about the origin, evolution, and destiny of the universe.",
+      "max_diameter_meters": 19.50699806
+    },
+    {
+      "name": "Cheops",
+      "description": "",
+      "max_diameter_meters": 16.76977873
+    },
+    {
+      "name": "Clementine",
+      "description": "Clementine was launched in 1994 and The lunar observations included imaging at various wavelengths in the visible as well as in ultraviolet and infrared, laser ranging altimetry, gravimetry, and charged particle measurements. Clementine successfully entered an elliptical polar orbit (about 270 × 1,830 miles or 430 × 2,950 kilometers) around the Moon on Feb. 19, 1994, with a period of five days. In two months during 1994, it transmitted about 1.6 million digital images of the lunar surface, many of them with resolutions down to about 330-660 feet (100-200 meters). In the process, it provided scientists with their first look at the total lunar landscape including polar regions.",
+      "max_diameter_meters": 4.131728411
+    },
+    {
+      "name": "CloudSat",
+      "description": "In August 2010, CloudSat embarked on a new mission phase to study the genesis and patterns of tropical cyclones. Since its launch in 2006, CloudSat has played an instrumental role in new techniques for estimating the intensity of hurricanes from space, in addition to producing data about links between pollution and rainfall. The mission ended in late December of 2023.",
+      "max_diameter_meters": 5.079998493
+    },
+    {
+      "name": "Cluster",
+      "description": "",
+      "max_diameter_meters": 34.32709503
+    },
+    {
+      "name": "CYGNSS",
+      "description": "The Cyclone Global Navigation Satellite System (CYGNSS) mission uses eight (currently seven due to communications issues with CYGNSS 6) micro-satellites to measure wind speeds over Earth's oceans, increasing the ability of scientists to understand and predict hurricanes. Each satellite will take information based on the signals from four GPS satellites.",
+      "max_diameter_meters": 1.590483725
+    },
+    {
+      "name": "DART",
+      "description": "An on-orbit demonstration of asteroid deflection was a key test that NASA and other agencies wished to perform before any actual need is present. The DART mission was NASA's demonstration of kinetic impactor technology, impacting an asteroid to adjust its speed and path. The targeted system is composed of two asteroids: the larger asteroid Didymos (diameter: 780 meters, 0.48 miles), and the smaller moonlet asteroid, Dimorphos (diameter: 160 meters, 525 feet), which orbits Didymos. On September 26th, 2022, the DART spacecraft impacted Dimorphos nearly head-on, shortening the time it takes the small asteroid moonlet to orbit Didymos by several minutes.",
+      "max_diameter_meters": 17.51533222
+    },
+    {
+      "name": "Dawn",
+      "description": "Dawn launched in 2007 on a journey that put about 4.3 billion miles (6.9 billion kilometers) on its odometer. Propelled by ion engines, the spacecraft achieved many firsts until its extended mission concluded on Oct. 31, 2018. The Dawn mission was designed to study two large bodies in the asteroid belt in order to answer questions about the formation of the Solar System, as well as to test the performance of its ion thrusters in deep space. Ceres and Vesta were chosen as two contrasting protoplanets, the first one apparently \"wet\" (i.e. icy and cold) and the other \"dry\" (i.e. rocky). The Dawn mission ran out of fuel in 2018 and still orbits the dwarf planet Ceres.",
+      "max_diameter_meters": 19.6984787
+    },
+    {
+      "name": "Deep_Impact",
+      "description": "On July 3, 2005, at 06:00 UT (or 06:07 UT Earth-receive time), Deep Impact released the impactor probe, which, using small thrusters, moved into the path of the comet, where it hit the following day, July 4, at 05:44:58 UT. The mission was then renamed as EPOXI, with a dual purpose to study extrasolar planets and the comet 103/P Hartley 2. The spacecraft arrived at Hartley 2 in 2010, and then planned to study an asteroid when contact was lost in August of 2013.",
+      "max_diameter_meters": 3.912592053
+    },
+    {
+      "name": "Deep_Impact_Impactor",
+      "description": "On July 3, 2005, at 06:00 UT (or 06:07 UT Earth-receive time), Deep Impact released the impactor probe, which, using small thrusters, moved into the path of the comet, where it hit the following day, July 4, at 05:44:58 UT. The probe was traveling at a relative velocity of about 23,000 miles per hour (37,000 kilometers per hour) at the time of impact. The impact generated an explosion the equivalent of 4.7 tons of TNT and a crater estimated to be about 490 feet (150 meters) in diameter. The impact generated an explosion the equivalent of 4.7 tons of TNT and a crater estimated to be about 490 feet (150 meters) in diameter.",
+      "max_diameter_meters": 1.24943763
+    },
+    {
+      "name": "Deep_Space_1",
+      "description": "DS1 passed the near-Earth asteroid 9660 Braille on July 29th, 1999, at a range of about 16 miles (26 kilometers) and at a velocity of about 10 miles per second (15.5 kilometers per second). On Sept. 22, 2001, DS1 entered the coma of Comet Borrelly, making its closest approach of about 1,350 miles (2,171 kilometers) to the nucleus. Traveling at about 10 miles per second (16.58 kilometers per second) relative to the nucleus at the time, it returned some of the best images of a comet to date, as well as other significant data. It was the first NASA mission to use an ion propulsion engine.",
+      "max_diameter_meters": 11.80035543
+    },
+    {
+      "name": "Desdyni",
+      "description": "",
+      "max_diameter_meters": 21.2805481
+    },
+    {
+      "name": "Double_Star",
+      "description": "",
+      "max_diameter_meters": 7.51653266
+    },
+    {
+      "name": "DSCOVR",
+      "description": "DSCOVR was launched on Feb.11, 2015, and 100 days later it reached the Sun–Earth L1 Lagrange point and began orbiting about 1 million miles (1.5 million kilometers) from Earth.\n The satellite has a continuous view of the Sun and the sunlit side of Earth. It takes full Earth pictures about every 2 hours using the Earth Polychromatic Imaging Camera (EPIC) instrument. In October 2015, a website was launched that posts at least a dozen new color images every day from EPIC.",
+      "max_diameter_meters": 6.107575893
+    },
+    {
+      "name": "EO-1",
+      "description": "It was the first satellite to map active lava flows from space; the first to measure a facility's methane leak from space; and the first to track re-growth in a partially logged Amazon forest from space. EO-1 captured scenes such as the ash after the World Trade Center attacks, the flooding in New Orleans after Hurricane Katrina, volcanic eruptions and a large methane leak in southern California.",
+      "max_diameter_meters": 5.4030779
+    },
+    {
+      "name": "Euclid",
+      "description": "Euclid will probe the history of the expansion of the Universe and the formation of cosmic structures by measuring the redshift of galaxies out to a value of 2, which is equivalent to seeing back 10 billion years into the past. In this way, Euclid will cover the entire period over which dark energy played a significant role in accelerating the expansion of the Universe.",
+      "max_diameter_meters": 5.295277596
+    },
+    {
+      "name": "Europa_Clipper",
+      "description": "To determine if this distant moon has conditions favorable for life, NASA’s Europa Clipper mission is preparing to conduct the first dedicated and detailed study of an ocean world beyond Earth.\n The expedition’s objective is to explore Europa to investigate its habitability. The spacecraft is not being sent to find life itself, but will instead try to answer specific questions about Europa’s ocean, ice shell, composition and geology.",
+      "max_diameter_meters": 30.50039959
+    },
+    {
+      "name": "ExoMars_TGO",
+      "description": "",
+      "max_diameter_meters": 17.68910027
+    },
+    {
+      "name": "Explorer_1",
+      "description": "It was the first spacecraft to detect the Van Allen radiation belt, returning data until its batteries were exhausted after nearly four months. It remained in orbit until 1970.",
+      "max_diameter_meters": 2.033017278
+    },
+    {
+      "name": "Gaia",
+      "description": "",
+      "max_diameter_meters": 9.873170853
+    },
+    {
+      "name": "Galileo",
+      "description": "The Galileo spacecraft logged quite a few other firsts during its 14-year mission to Jupiter. Among its discoveries: an intense radiation belt above Jupiter's cloud tops, helium in about the same concentration as the Sun, extensive and rapid resurfacing of the moon Io because of volcanism and a magnetic field at Ganymede.",
+      "max_diameter_meters": 12.79407525
+    },
+    {
+      "name": "Galileo_Probe",
+      "description": "The probe measured temperature, pressure, chemical composition, cloud characteristics, sunlight and energy internal to the planet, and lightning. During its 58-minute life, the probe penetrated 124 miles (200 kilometers) into Jupiter's violent atmosphere before it was crushed, melted and/or vaporized by the intense pressure and temperature.",
+      "max_diameter_meters": 1.447450519
+    },
+    {
+      "name": "Geotail",
+      "description": "The Geotail mission was a joint project of Japan’s Institute of Space and Astronautical Science (ISAS) and later, from 2003, the Japan Aerospace Exploration Agency (JAXA) and NASA. The mission was part of the International Solar Terrestrial Physics (ISTP) project, which also included the Wind, Polar, SOHO, and Cluster missions. Geotail’s goal was to study the structure and dynamics of the long tail region of Earth’s magnetosphere, which is created on the nightside of Earth by the solar wind. During active periods, the tail couples with the near-Earth magnetosphere, and often releases energy that is stored in the tail, activating auroras in the polar ionosphere.",
+      "max_diameter_meters": 13.58
+    },
+    {
+      "name": "Giotto",
+      "description": "",
+      "max_diameter_meters": 3.14727962
+    },
+    {
+      "name": "GPM",
+      "description": "NASA and the Japanese Aerospace Exploration Agency (JAXA) launched the GPM Core Observatory satellite on February 27th, 2014, carrying advanced instruments that set a new standard for precipitation measurements from space. The data they provide is used to unify precipitation measurements made by an international network of partner satellites to quantify when, where, and how much it rains or snows around the world.\n\n The GPM mission contributes to advancing our understanding of Earth's water and energy cycles, improves the forecasting of extreme events that cause natural disasters, and extends current capabilities of using satellite precipitation information to directly benefit society.",
+      "max_diameter_meters": 13.52457857
+    },
+    {
+      "name": "GRACE",
+      "description": "The twin GRACE spacecraft tracked Earth's water movement to monitor changes in underground water storage, the amount of water in large lakes and rivers, soil moisture, ice sheets and glaciers, and sea level caused by the addition of water to the ocean. These discoveries provide a unique view of Earth's climate and have far-reaching benefits to society and the world's population. GRACE is able to make accurate measurements thanks in part to two advanced technologies: a microwave ranging system based on Global Positioning System (GPS) technology, and a very sensitive accelerometer—an instrument that measures the forces on the satellites besides gravity (such as atmospheric drag). Using the microwave ranging system, GRACE can measure the distance between satellites to within one micron -- about the diameter of a blood cell. Together, these very precise measurements of location, force and orbital change translate into an observation of gravity with unprecedented accuracy. Flight engineers maneuver the satellites only if they separate by more than 155 miles (250 km), otherwise they are left alone and gravity ‘tugs and pulls’ on them.",
+      "max_diameter_meters": 3.288840055
+    },
+    {
+      "name": "GRACE_FO",
+      "description": "Launched on May 22, 2018, GRACE-FO continues the work of tracking Earth's water movement to monitor changes in underground water storage, the amount of water in large lakes and rivers, soil moisture, ice sheets and glaciers, and sea level caused by the addition of water to the ocean. These discoveries provide a unique view of Earth's climate and have far-reaching benefits to society and the world's population. GRACE-FO is able to make accurate measurements thanks in part to two advanced technologies: a microwave ranging system based on Global Positioning System (GPS) technology, and a very sensitive accelerometer—an instrument that measures the forces on the satellites besides gravity (such as atmospheric drag).\n\n Using the microwave ranging system, GRACE can measure the distance between satellites to within one micron -- about the diameter of a blood cell. Together, these very precise measurements of location, force and orbital change translate into an observation of gravity with unprecedented accuracy. Flight engineers maneuver the satellites only if they separate by more than 155 miles (250 km), otherwise they are left alone and gravity ‘tugs and pulls’ on them.",
+      "max_diameter_meters": 3.254147887
+    },
+    {
+      "name": "GRAIL",
+      "description": "As the two spacecraft flew over areas of increasing gravity, the probes moved slightly toward and away from each other, while an instrument measured changes in their relative velocity, providing key information on the Moon’s gravitational field. At the end of the mission, the probes were purposely crashed on the Moon.",
+      "max_diameter_meters": 3.089059711
+    },
+    {
+      "name": "GRIFEX",
+      "description": "GRIFEX advanced the technology required for future space-borne measurements of atmospheric composition from geostationary orbit that are relevant to climate change. The size of GRIFEX was three CubeSat units, or 30 x 10 x 10 cm.",
+      "max_diameter_meters": 0.494394585
+    },
+    {
+      "name": "Herschel",
+      "description": "",
+      "max_diameter_meters": 7.575034142
+    },
+    {
+      "name": "HESSI_RHESSI",
+      "description": "",
+      "max_diameter_meters": 29.47773075
+    },
+    {
+      "name": "Hubble_Space_Telescope",
+      "description": "The Hubble Space Telescope's launch and deployment in April 1990 marked the most significant advancement in astronomy since Galileo's telescope. The first major optical telescope to be placed in space, Hubble operates from the ultimate mountaintop. Far above the distortion of Earth's atmosphere, clouds and light pollution, Hubble has an unobstructed view of the universe.\n\n Hubble can see far more than what we can with our eyes. Its domain extends from the ultraviolet, through the visible, and to the near-infrared.\n\n The telescope has had a major impact on every area of astronomy, from the solar system to objects at the edge of the universe. Scientists have used Hubble to observe the most distant stars and galaxies as well as the planets in our solar system.\n\n Data and from the orbiting telescope are the backbone of more than 15,000 technical papers. It also, of course, continues to dazzle us with stunning pictures of stars, galaxies and planets.",
+      "max_diameter_meters": 16.7269392
+    },
+    {
+      "name": "Huygens",
+      "description": "The probe was about 9 feet wide (2.7 meters) and weighed roughly 700 pounds (318 kilograms). It was built like a shellfish: a hard shell protected its delicate interior from high temperatures during the a two hour and 27 minute descent through the atmosphere of Saturn's giant moon Titan. Huygens landed on Titan on January 14, 2005.",
+      "max_diameter_meters": 2.615347147
+    },
+    {
+      "name": "IBEX",
+      "description": "IBEX is a small satellite the size of a bus tire. It has \"telescopes\" that look out toward the edge of the solar system. However, these telescopes are different than most telescopes. They collect particles instead of light. These particles are called energetic neutral atoms (ENAs)—high-energy particles produced at the very edge of our solar system.",
+      "max_diameter_meters": 1.545680344
+    },
+    {
+      "name": "ICESat_2",
+      "description": "ICESat-2 (short for Ice, Cloud, and land Elevation Satellite), launched Sept. 15, 2018, uses lasers and a very precise detection instrument to measure the elevation of Earth’s surface. By timing how long it takes laser beams to travel from the satellite to Earth and back, scientists can calculate the height of glaciers, sea ice, forests, lakes and more – including the changing ice sheets of Greenland and Antarctica. Our planet's frozen and icy areas, called the cryosphere, are a key focus of NASA's Earth science research. ICESat-2 will help scientists investigate why, and how much, our cryosphere is changing in a warming climate. The satellite will also measure heights across Earth's temperate and tropical regions, and take stock of the vegetation in forests worldwide.",
+      "max_diameter_meters": 7.341841936
+    },
+    {
+      "name": "IMAGE",
+      "description": "IMAGE was the first spacecraft dedicated to imaging the Earth's magnetosphere, producing comprehensive global images of plasma in the inner magnetosphere.",
+      "max_diameter_meters": 20.79482746
+    },
+    {
+      "name": "InSight",
+      "description": "InSight is the first outer space robotic explorer to study in-depth the \"inner space\" of Mars: its crust, mantle, and core. Studying Mars' interior structure answers key questions about the early formation of rocky planets in our inner solar system - Mercury, Venus, Earth, and Mars - more than 4 billion years ago, as well as rocky exoplanets. InSight also measures tectonic activity and meteorite impacts on Mars today. The lander uses cutting edge instruments, to delve deep beneath the surface and seek the fingerprints of the processes that formed the terrestrial planets. It does so by measuring the planet's \"vital signs\": its \"pulse\" (seismology), \"temperature\" (heat flow), and \"reflexes\" (precision tracking).",
+      "max_diameter_meters": 3.592453003
+    },
+    {
+      "name": "Integral",
+      "description": "",
+      "max_diameter_meters": 6.296370983
+    },
+    {
+      "name": "International_Space_Station",
+      "description": "From design to launch, 15 countries collaborated to assemble the world's only permanently crewed orbital facility, which can house a crew of six and 150 ongoing experiments annually across an array of disciplines. The ISS represents a global effort to expand our knowledge and improve life on Earth while testing technology that will extend our reach to the moon, Mars and beyond.",
+      "max_diameter_meters": 111.9884148
+    },
+    {
+      "name": "IPEX",
+      "description": "The purpose of the mission was to validate onboard instrument processing and autonomous payload operations that could be used in the future on the proposed NASA HYperSPectral Infra-Red Instrument (HyspIRI) mission.",
+      "max_diameter_meters": 0.288276456
+    },
+    {
+      "name": "ISAS",
+      "description": "The Clementine Interstage Adapter Satellite (ISAS) was the lunar transfer booster used to propel the Clementine spacecraft to the Moon from Earth orbit.",
+      "max_diameter_meters": 1.797999799
+    },
+    {
+      "name": "Iso",
+      "description": "",
+      "max_diameter_meters": 5.319443226
+    },
+    {
+      "name": "IXPE",
+      "description": "The Imaging X-Ray Polarimetry Explorer (IXPE) will allow astronomers to explore, for the first time, the hidden details of some of the most extreme and exotic astronomical objects, such as stellar and supermassive black holes, neutron stars and pulsars.",
+      "max_diameter_meters": 5.23168993
+    },
+    {
+      "name": "James_Webb_Space_Telescope",
+      "description": "Webb will be the premier observatory of the next decade, serving thousands of astronomers worldwide. It will study every phase in the history of our Universe, ranging from the first luminous glows after the Big Bang, to the formation of solar systems capable of supporting life on planets like Earth, to the evolution of our own Solar System.",
+      "max_diameter_meters": 20.48668671
+    },
+    {
+      "name": "Juice",
+      "description": "The mission will characterize these moons as both planetary objects and possible habitats, explore Jupiter’s complex environment in depth, and study the wider Jupiter system as an archetype for gas giants across the Universe. Juice will reach the Jovian system in July 2031 after four gravity assists and eight years of travel. In December of 2034, the spacecraft will enter orbit around Ganymede for its close-up science mission.",
+      "max_diameter_meters": 26.98104477
+    },
+    {
+      "name": "Juno",
+      "description": "Juno’s marching orders — to pick the lock on Jupiter’s secrets — have been spectacularly fulfilled. High above Jupiter’s roiling clouds, three giant blades stretch out from a cylindrical, six-sided body. Some 66 feet (20 meters) wide, the Juno spacecraft is a dynamic engineering marvel, spinning to keep itself stable as it makes sweeping elliptical (oval-shaped) orbits around Jupiter. At their widest point, these carry Juno far from the giant planet and its moons, keeping it mostly clear of heavy radiation regions. But on closer passes, every 38 days, Juno cuts within 3,100 miles (5,000 kilometers) of Jupiter’s cloud tops. Juno achieved rough, global coverage of the giant planet by the end of 2018, but at a coarse resolution; it then began a new set of orbits to fill in the details. The spacecraft’s long, looping orbits are meant to keep it mostly clear of the doughnut-shaped belts of harmful radiation close to Jupiter and its moons. Every 38 days, however, Juno makes a close pass to observe Jupiter’s gigantic clouds and titanic storms, crackling with lightning. Powerful pulses of energy — super-charged particles streaming through Jupiter’s magnetic field — create auroras. They’re similar to the northern and southern lights on Earth, that is, if you can imagine scaling them up to the size of a planet that could hold 1,300 Earths.",
+      "max_diameter_meters": 18.54314613
+    },
+    {
+      "name": "Kepler",
+      "description": "Kepler was equipped to look for planets with size spans from one-half to twice the size of Earth (terrestrial planets) in the habitable zone of their stars where liquid water might exist in the natural state on the surface of the planet. It operated from 2009 to 2018.",
+      "max_diameter_meters": 5.007039547
+    },
+    {
+      "name": "LADEE",
+      "description": "By studying the exosphere—an atmosphere that is so thin that its molecules do not collide with each other—the Lunar Atmosphere and Dust Environment Explorer (LADEE) helped further the study of other planetary bodies with exospheres such as Mercury and some of Jupiter’s moons.",
+      "max_diameter_meters": 1.970438659
+    },
+    {
+      "name": "Landsat_7",
+      "description": "Landsat 7 was the seventh satellite of the Landsat program. Launched on April 15th, 1999, Landsat 7's primary goal was to refresh the global archive of satellite photos, and therefore provide up-to-date and cloud-free images. The Landsat program is managed and operated by the United States Geological Survey, and data from Landsat 7 was collected and distributed by the USGS.",
+      "max_diameter_meters": 13.40480506
+    },
+    {
+      "name": "Landsat_8",
+      "description": "It is the eighth satellite in the Landsat program; the seventh to reach orbit successfully. Originally called the Landsat Data Continuity Mission (LDCM), it is a collaboration between NASA and the United States Geological Survey (USGS). NASA Goddard Space Flight Center in Greenbelt, Maryland, provided development, mission systems engineering, and acquisition of the launch vehicle while the USGS provided for development of the ground systems and will conduct on-going mission operations. It comprises the camera of the Operational Land Imager (OLI) and the Thermal Infrared Sensor (TIRS) which can be used to study earth surface temperature and is used to study global warming.",
+      "max_diameter_meters": 10.85033965
+    },
+    {
+      "name": "Landsat_9",
+      "description": "It is the ninth satellite in the Landsat program; the eigth to reach orbit successfully. Originally called the Landsat Data Continuity Mission (LDCM), it is a collaboration between NASA and the United States Geological Survey (USGS). NASA Goddard Space Flight Center in Greenbelt, Maryland, provided development, mission systems engineering, and acquisition of the launch vehicle while the USGS provided for development of the ground systems and will conduct on-going mission operations. It comprises the camera of the Operational Land Imager (OLI) and the Thermal Infrared Sensor (TIRS) which can be used to study earth surface temperature and is used to study global warming.",
+      "max_diameter_meters": 17.47426343
+    },
+    {
+      "name": "LCROSS",
+      "description": "The identification of water is very important to the future of human activities on the Moon. LCROSS remained paired to its upper stage centaur until reaching the south pole of the moon. The centaur was then separated from LCROSS and intentionally crashed into the south pole of the Moon. The impact ejected material from the crater's floor to create a plume that specialized instruments have been able to analyze for the presence of water (ice and vapor), hydrocarbons and hydrated materials. About fifteeen minutes after the upper stage centaur impacted, LCROSS also intentionally crashed into the perpetually dark floor of the Moon's polar crater Cabeus.",
+      "max_diameter_meters": 3.596423626
+    },
+    {
+      "name": "Lisa_Pathfinder",
+      "description": "",
+      "max_diameter_meters": 4.105612993
+    },
+    {
+      "name": "Lucy",
+      "description": "Trojan asteroids associated with Jupiter are thought to be remnants of the primordial material that formed the outer planets. These primitive bodies may hold clues to the history of solar system formation. Lucy is the first mission to visit the Trojans.",
+      "max_diameter_meters": 15.59999275
+    },
+    {
+      "name": "Lunar_Flashlight",
+      "description": "The observations made by the low-cost mission provide unambiguous information about the presence of water ice deposits inside craters that would be an valuable in-situ resource for future Artemis missions to the lunar surface. As a technology demonstration mission, Lunar Flashlight showcases several technological firsts, including being the first mission to look for water ice using a laser reflectometer and the first planetary CubeSat mission to use \"green\" propulsion - a propellant that is less toxic and safer than hydrazine, a common propellant used by spacecraft.",
+      "max_diameter_meters": 0.874541581
+    },
+    {
+      "name": "Lunar_IceCube",
+      "description": "Lunar IceCube is a small satellite orbiter mission to prospect, locate, and estimate the amount and composition of water ice deposits on the Moon for future exploitation by robots or humans. It flew as a secondary payload mission on Artemis 1.",
+      "max_diameter_meters": 2.15270102
+    },
+    {
+      "name": "Lunar_Prospector",
+      "description": "The probe found evidence suggesting water ice at both poles. The mission ended in July of 1999 with the spacecraft impacting the lunar surface, creating a dust cloud that was studied from Earth.",
+      "max_diameter_meters": 6.689558506
+    },
+    {
+      "name": "Lunar_Reconnaissance_Orbiter",
+      "description": "LRO’s primary goal was to make a 3D map of the Moon’s surface from lunar polar orbit as part of a high-resolution mapping program to identify landing sites and potential resources, to investigate the radiation environment, and to prove new technologies in anticipation of future automated and human missions to the surface of the Moon.The LRO instruments return global data, such as day-night temperature maps, a global geodetic grid, high resolution color imaging and the moon's UV albedo. However there is particular emphasis on the polar regions of the moon where continuous access to solar illumination may be possible and the prospect of water in the permanently shadowed regions at the poles may exist.",
+      "max_diameter_meters": 5.504999161
+    },
+    {
+      "name": "Magellan",
+      "description": "The Magellan probe was the first interplanetary mission to be launched from the Space Shuttle, the first mission to map the entire surface of Venus, and the first spacecraft to test aerobraking as a method for circularizing its orbit. Magellan was the fifth successful NASA mission to Venus, and it ended an eleven-year gap in U.S. interplanetary probe launches. It self-destructed in the Venusian atmosphere in 1994.",
+      "max_diameter_meters": 8.898650169
+    },
+    {
+      "name": "MarCO",
+      "description": "Launching with the InSight mission to Mars, the twin spacecraft provided an experimental communications relay to let scientists on Earth know quickly about InSight's landing.",
+      "max_diameter_meters": 0.887027562
+    },
+    {
+      "name": "Mars_Exploration_Rover",
+      "description": "NASA's Opportunity rover was one of the most successful and enduring interplanetary missions. Opportunity operated almost 15 years, setting several records and making a number of key discoveries.",
+      "max_diameter_meters": 2.616860151
+    },
+    {
+      "name": "Mars_Express",
+      "description": "NASA is participating in a mission of the European Space Agency and the Italian Space Agency called Mars Express, which has been exploring the atmosphere and surface of Mars from polar orbit since arriving at the red planet on December 26, 2003. The mission's main objective is to search for sub-surface water from orbit. Seven scientific instruments on the orbiting spacecraft have conducted rigorous investigations to help answer fundamental questions about the geology, atmosphere, surface environment, history of water, and potential for life on Mars. Examples of discoveries - still debated by scientists -- by Mars Express are evidence of recent glacial activity, explosive volcanism, and methane gas.\n\nMars Express is so called because it will be built more quickly than any other comparable planetary mission.",
+      "max_diameter_meters": 48.42525291
+    },
+    {
+      "name": "Mars_Global_Surveyor",
+      "description": "During its mission, Mars Global Surveyor also produced the first three-dimensional profiles of Mars’ North Pole using laser altimeter readings. In addition, the laser altimeter essentially mapped almost all of the planet, by firing approximately 500 billion pulses at the surface, providing topographical data that was more detailed than many places on Earth. The spacecraft’s primary mission concluded on Feb. 1, 2001, by which time it had returned 83,000 images of Mars, more than all previous missions to Mars combined. It continued to operate until late 2006.",
+      "max_diameter_meters": 10.51671886
+    },
+    {
+      "name": "Mars_Odyssey",
+      "description": "Mars Odyssey was designed to investigate the Martian environment, providing key information on its surface and the radiation hazards future explorers might face. The goal was to map the chemical and mineralogical makeup of Mars as a step to detecting evidence of past or present water and volcanic activity on Mars. One of Mars Odyssey’s most exciting findings came early in the mission. In May 2002, NASA announced that the probe had identified large amounts of hydrogen in the soil, implying the presence of ice below the planet’s surface. During its many years in Martian orbit, Mars Odyssey globally mapped the amount and distribution of the numerous chemical elements and minerals in the Martian surface and also tracked the radiation environment in low Mars orbit, both necessary before humans can effectively explore the Martian surface.\n By mid-2016, the THEMIS instrument had returned more than 208,000 images in visible-light wavelengths and more than 188,000 in thermal-infrared wavelengths.",
+      "max_diameter_meters": 8.221435308
+    },
+    {
+      "name": "Mars_Reconnaissance_Orbiter",
+      "description": "Mars Reconnaissance Orbiter is designed to track changes in the water and dust in Mars' atmosphere, look for more evidence of ancient seas and hot springs and peer into past Martian climate changes by studying surface minerals and layering. The orbiter carries a powerful camera capable of taking sharp images of surface features the size of a beach ball. The orbiter also serves as a data relay station for other Mars missions.",
+      "max_diameter_meters": 13.18039894
+    },
+    {
+      "name": "MAVEN",
+      "description": "The Mars Atmosphere and Volatile Evolution Mission (MAVEN) is the first mission dedicated to studying Mars’ upper atmosphere. The goal is to use this data to determine how the loss of volatiles from the Martian atmosphere has affected the Martian climate over time, and thus contribute to a better understanding of terrestrial climatology.",
+      "max_diameter_meters": 13.12609959
+    },
+    {
+      "name": "MCubed_2",
+      "description": "MCubed-2, short for Michigan Multipurpose Minisat 2, was designed as a technology demonstrator for a new FPGA-based image processing system intended for a future NASA mission.",
+      "max_diameter_meters": 0.279926427
+    },
+    {
+      "name": "Mercury_Magnetospheric_Orbiter",
+      "description": "",
+      "max_diameter_meters": 23.40765953
+    },
+    {
+      "name": "Mercury_Planetary_Orbiter",
+      "description": "",
+      "max_diameter_meters": 7.965466976
+    },
+    {
+      "name": "Mercury_Transport_Module",
+      "description": "",
+      "max_diameter_meters": 29.98450661
+    },
+    {
+      "name": "MESSENGER",
+      "description": "MESSENGER (Mercury Surface, Space Environment, Geochemistry and Ranging) was the first spacecraft to orbit Mercury. Among its accomplishments, the mission determined Mercury’s surface composition, revealed its geological history, discovered details about its internal magnetic field, and verified its polar deposits are dominantly water-ice. The mission ended when MESSENGER slammed into Mercury’s surface.",
+      "max_diameter_meters": 6.956809044
+    },
+    {
+      "name": "MMS",
+      "description": "The Magnetospheric Multiscale (MMS) mission is a Solar Terrestrial Probes mission comprising four identically instrumented spacecraft that will use Earth's magnetosphere as a laboratory to study the microphysics of three fundamental plasma processes: magnetic reconnection, energetic particle acceleration, and turbulence. These processes occur in all astrophysical plasma systems but can be studied in situ only in our solar system and most efficiently only in Earth's magnetosphere, where they control the dynamics of the geospace environment and play an important role in the processes known as \"space weather.\"",
+      "max_diameter_meters": 26.25121975
+    },
+    {
+      "name": "NEAR_Shoemaker",
+      "description": "The NEAR mission studied the near-Earth asteroid Eros from close orbit over a period of a year, and also flew by the asteroid Mathilde. The mission succeeded in closing in with the asteroid and orbited it several times, finally ending by touching down on the asteroid on February 12, 2001.",
+      "max_diameter_meters": 5.293577671
+    },
+    {
+      "name": "New_Horizons",
+      "description": "New Horizons was the first spacecraft to encounter Pluto, a relic from the formation of the solar system. By the time it reached the Pluto system, the spacecraft had traveled farther away and for a longer time period (more than nine years) than any previous deep space spacecraft ever launched. On July 14, 2015, New Horizons flew about 4,800 miles (7,800 kilometers) above the surface of Pluto. Besides collecting data on Pluto and Charon (the Charon flyby was at about 17,900 miles or 28,800 kilometers), New Horizons also observed Pluto’s other satellites, Nix, Hydra, Kerberos and Styx.\n\n The download of the entire set of data collected during the encounter with Pluto and Charon—about 6.25 gigabytes—took over 15 months and was officially completed at 21:48 UT Oct. 25, 2016. Such a lengthy period was necessary because the spacecraft was roughly 4.5 light-hours from Earth and it could only transmit 1-2 kilobits per second. On Jan. 1, 2019, New Horizons flew past Arrokoth (previously named 2014 MU69 and also called Ultima Thule), the most distant target in history. The New Horizons mission is currently exploring additional Kuiper Belt objects.",
+      "max_diameter_meters": 2.975899696
+    },
+    {
+      "name": "NISAR",
+      "description": "NISAR will be the first radar of its kind in space to systematically map Earth, using two different radar frequencies (L-band and S-band) to measure changes of our planet’s surface, including movements as small as a centimeter. Synthetic aperture radar (SAR) refers to a technique for producing fine-resolution images from a resolution-limited radar system. The NISAR mission is an equal collaboration between NASA and the Indian Space Research Organisation (ISRO) and marks the first time the two agencies have cooperated on hardware development for an Earth-observing mission.",
+      "max_diameter_meters": 14.28800106
+    },
+    {
+      "name": "NuSTAR",
+      "description": "The Nuclear Spectroscopic Telescope Array (NuSTAR) mission has deployed the first orbiting telescopes to focus light in the high energy X-ray region of the electromagnetic spectrum. Our view of the universe in this spectral window has been limited because previous orbiting telescopes have not employed true focusing optics, but rather have used coded apertures that have intrinsically high backgrounds and limited sensitivity.\n\nIn addition to its core science program, NuSTAR will offer opportunities for a broad range of science investigations, ranging from probing cosmic ray origins to studying the extreme physics around collapsed stars to mapping microflares on the surface of the Sun. NuSTAR will also respond to targets of opportunity including supernovae and gamma-ray bursts.",
+      "max_diameter_meters": 22.86521912
+    },
+    {
+      "name": "OCO_2",
+      "description": "The OCO-2 Project primary science objective is to collect the first space-based measurements of atmospheric carbon dioxide with the precision, resolution and coverage needed to characterize its sources and sinks and quantify their variability over the seasonal cycle.OCO-2 flies in a sun-synchronous, near-polar orbit with a group of Earth-orbiting satellites with synergistic science objectives. Near-global coverage of the sunlit portion of Earth is provided in this orbit over a 16-day (233-revolution) repeat cycle. OCO-2’s single instrument incorporates three high-resolution grating spectrometers, designed to measure the near-infrared absorption of reflected sunlight by carbon dioxide and molecular oxygen.",
+      "max_diameter_meters": 8.132896423
+    },
+    {
+      "name": "OSIRIS_REX",
+      "description": "OSIRIS-APEX is an acronym for \"Origins, Spectral Interpretation, Resource Identification, Security-Apophis Explorer.\" Originally named OSIRIS-REx (\"Regolith Explorer\"), the goal of the mission was to collect a sample weighing 2.1 ounces (59.5 grams) from near-Earth asteroid 101955 Bennu and then to bring the sample to Earth.\n\n The mission, developed by scientists at the University of Arizona, will give scientists more information about how the early solar system formed and about how life began. It will also help us better understand asteroids that could impact Earth in the future. On October 20th, 2020, approximately 121.6 grams of material from the surface of Bennu was successfully collected. On May 10th, 2021, the spacecraft left Bennu after nearly two years in orbit to begin the two-year voyage back to Earth.\n\n On Sept. 24, 2023, the OSIRIS-REx spacecraft flew by Earth to release the capsule carrying the asteroid sample for a parachute landing. The sample capsule deployed its parachute at an altitude of about 1.9 miles (3 kilometers), bringing it in for a soft landing at the Utah Test and Training Range about 80 miles (130 kilometers) west of Salt Lake City, Utah.\n\n The capsule was sent to Johnson Space Center in Houston, Texas, where scientists at the Astromaterials Acquisition and Curation Office will catalog it and set aside portions of the sample for partners in the Japanese and Canadian space agencies. The spacecraft collected 121.6 grams of material from Bennu. \n\n The main spacecraft (now renamed OSIRIS-APEX) will continue on to investigate the asteroid 99942 Apophis.\n\n ",
+      "max_diameter_meters": 6.219933987
+    },
+    {
+      "name": "OSTM",
+      "description": "The third in a series of sea level missions, Jason-2/Ocean Surface Topography Mission follows the TOPEX/Poseiden and Jason-1 missions. These very accurate observations of variations in sea surface height — also known as ocean topography — provide information about global sea level, the speed and direction of ocean currents, and heat stored in the ocean.",
+      "max_diameter_meters": 7.945781708
+    },
+    {
+      "name": "PACE",
+      "description": "PACE will advance the assessment of ocean health by measuring the distribution of phytoplankton, tiny plants and algae that sustain the marine food web. It will also continue systematic records of key atmospheric variables associated with air quality and Earth's climate. PACE's data will help us better understand how the ocean and atmosphere exchange carbon dioxide. Novel uses of PACE data will benefit our economy and society; for example, it will help identify the extent and duration of harmful algal blooms. PACE will extend and expand NASA's long-term observations of our living planet. By doing so, it will take Earth's pulse in new ways for decades to come.",
+      "max_diameter_meters": 7.006451011
+    },
+    {
+      "name": "Parker_Solar_Probe",
+      "description": "NASA's Parker Solar Probe is diving into the Sun’s atmosphere, facing brutal heat and radiation, on a mission to give humanity its first-ever sampling of a star’s atmosphere.\n\n During its journey, the mission will provide answers to long-standing questions that have puzzled scientists for more than 60 years: Why is the corona much hotter than the Sun's surface (the photosphere)? How does the solar wind accelerate? What are the sources of high-energy solar particles?\n\n We live in the Sun's atmosphere and this mission will help scientists better understand the Sun's impact on Earth.\n\n Data from Parker will be key to understanding and, perhaps, forecasting space weather. Space weather can change the orbits of satellites, shorten their lifetimes, or interfere with onboard electronics.\n\n On its final three orbits, Parker Solar Probe will fly to within 3.9 million miles (6.2 million kilometers) of the Sun’s surface—more than seven times closer than the current record holder for a close solar pass: the Helios 2 spacecraft. Helios came within 27 million miles (43 million kilometers) in 1976.\n\n Parker can survive these conditions because cutting-edge thermal engineering advances protect the spacecraft during its dangerous journey.\n\n The probe has four instrument suites designed to study magnetic fields, plasma and energetic particles, and image the solar wind.\n\n The mission is named for Dr. Eugene N. Parker, who pioneered our modern understanding of the Sun.",
+      "max_diameter_meters": 6.611062288
+    },
+    {
+      "name": "Philae",
+      "description": "On November 12th, 2014, the Philae probe successfully detached from Rosetta and landed on the surface of the comet 67P/Churyumov-Gerasimenko. Philae actually bounced off the surface of the comet twice, and its location was not known precisely for some time. Philae completed 80 percent of its planned first science sequence, returning spectacular images of its surroundings, showing a surface covered by dust and debris ranging in size from inches to a yard (millimeters to a meter).",
+      "max_diameter_meters": 1.298351407
+    },
+    {
+      "name": "Phoenix",
+      "description": "The mission’s science goals included studying the history of water on Mars in all phases, searching for evidence of habitable zones, and assessing the biological potential of the ice-soil boundary. More broadly, the lander was designed to determine whether life ever existed on Mars, characterize the climate and geology of the Red Planet, and to help prepare for future human exploration of its surface.",
+      "max_diameter_meters": 3.600168943
+    },
+    {
+      "name": "Planck",
+      "description": "",
+      "max_diameter_meters": 4.321184397
+    },
+    {
+      "name": "Polar",
+      "description": "Launched in 1996, the Polar mission gathered multi-wavelength imaging of the aurora, measured the entry of plasma into the polar magnetosphere and the geomagnetic tail, the flow of plasma to and from the ionosphere, and the deposition of particle energy in the ionosphere and upper atmosphere.",
+      "max_diameter_meters": 25.7
+    },
+    {
+      "name": "POSE_Composite",
+      "description": "",
+      "max_diameter_meters": 4.082837701
+    },
+    {
+      "name": "PREFIRE",
+      "description": "Analysis of PREFIRE’s measurements will inform climate and ice models, providing better projections of how a warming world will affect sea ice loss, ice sheet melt, and sea level rise. Improving climate models can ultimately help to provide more accurate projections on the impacts of storm severity and frequency, as well as coastal erosion and flooding. PREFIRE consists of two 6U CubeSats with a baseline mission length of 10 months.",
+      "max_diameter_meters": 1.084315151
+    },
+    {
+      "name": "Proba_2",
+      "description": "",
+      "max_diameter_meters": 1.724209011
+    },
+    {
+      "name": "Proba_3_CSC",
+      "description": "",
+      "max_diameter_meters": 2.74163723
+    },
+    {
+      "name": "Proba_3_OSC",
+      "description": "",
+      "max_diameter_meters": 1.458840549
+    },
+    {
+      "name": "Psyche",
+      "description": "Deep within the terrestrial planets, including Earth, scientists infer the presence of metallic cores, but these lie unreachably far below the planets’ rocky mantles and crusts. The asteroid Psyche offers a unique window into these building blocks of planet formation and the opportunity to investigate a previously unexplored type of world.",
+      "max_diameter_meters": 24.7368145
+    },
+    {
+      "name": "QuikSCAT",
+      "description": "Its primary mission was to measure the surface wind speed and direction over the ice-free global oceans. Observations from QuikSCAT had a wide array of applications, and contributed to climatological studies, weather forecasting, meteorology, oceanographic research, marine safety, commercial fishing, tracking large icebergs, and studies of land and sea ice, among others.",
+      "max_diameter_meters": 3.800492764
+    },
+    {
+      "name": "RainCube",
+      "description": "RainCube had three main objectives: Develop, launch, and operate the first radar instrument on a CubeSat (6U), demonstrate new technologies and provide space validation for a Ka-band (35.75 GHz) precipitation profiling radar, and enable future precipitation profiling Earth science missions on a low-cost, quick-turnaround platform. RainCube was launched directly from the International Space Station.",
+      "max_diameter_meters": 0.735791266
+    },
+    {
+      "name": "Rosetta",
+      "description": "The mission was launched on 2 March 2004, on a 10-year journey towards comet 67P/Churyumov-Gerasimenko. En route, it passed by two asteroids, 2867 Steins (in 2008) and 21 Lutetia (in 2010), before entering deep-space hibernation mode in June 2011. On 20 January 2014, it 'woke up' and prepared for arrival at the comet in August that year. On 12 November, the mission deployed its Philae probe to the comet, the first time in history that such a feat was achieved.",
+      "max_diameter_meters": 31.95912552
+    },
+    {
+      "name": "Sentinel_6_Michael_Freilich",
+      "description": "The first of two identical satellites to be launched five years apart, Sentinel-6 Michael Freilich will make high precision ocean altimetry measurements to continue the work previously done by Jason-1, Jason-2/OSTM, and the Jason-3 missions.\n\nA secondary objective is to collect high resolution vertical profiles of temperature and water vapor through the Radio Occultation instrument. This is used to help numerical weather predictions.",
+      "max_diameter_meters": 5.132573485
+    },
+    {
+      "name": "SMAP",
+      "description": "The Soil Moisture Active Passive (SMAP) satellite maps global soil moisture and detects whether soils are frozen or thawed. This mission helps scientists understand the links between Earth's water, energy and carbon cycles; reduce uncertainties in predicting weather and climate; and enhance our ability to monitor and predict natural hazards such as floods and droughts. SMAP is designed to measure soil moisture, every 2-3 days. This permits changes, around the world, to be observed over time scales ranging from major storms to repeated measurements of changes over the seasons.\n\n Everywhere on Earth not covered with water or not frozen, SMAP measures how much water is in the top layer of soil. It also distinguishes between ground that is frozen or thawed. Where the ground is not frozen, SMAP measures the amount of water found between the minerals, rocky material, and organic particles found in soil everywhere in the world (SMAP measures liquid water in the top layer of ground but is not able to measure the ice.)",
+      "max_diameter_meters": 9.516263485
+    },
+    {
+      "name": "Smart_1",
+      "description": "",
+      "max_diameter_meters": 4.61806798
+    },
+    {
+      "name": "SOHO",
+      "description": "The ESA-sponsored Solar and Heliospheric Observatory (SOHO) carries 12 scientific instruments to study the solar atmosphere, helioseismology and the solar wind. Information from the mission has allowed scientists to learn more about the Sun’s internal structure and dynamics, the chromosphere, the corona and solar particles.",
+      "max_diameter_meters": 9.427423954
+    },
+    {
+      "name": "Solar_Dynamics_Observatory",
+      "description": "",
+      "max_diameter_meters": 6.88638258
+    },
+    {
+      "name": "Solar_Orbiter",
+      "description": "",
+      "max_diameter_meters": 17.93440819
+    },
+    {
+      "name": "SORCE",
+      "description": "The measurements provided by SORCE specifically address long-term climate change, natural variability and enhanced climate prediction, and atmospheric ozone and UV-B radiation. These measurements are critical to studies of the Sun; its effect on our Earth system; and its influenceon humankind. SORCE ended its mission in 2020.",
+      "max_diameter_meters": 3.364966154
+    },
+    {
+      "name": "SPHEREx",
+      "description": "SPHEREx will survey the sky in optical as well as near-infrared light which, though not visible to the human eye, serves as a powerful tool for answering cosmic questions. Astronomers will use the mission to gather data on more than 450 million galaxies as well as more than 100 million stars in our own Milky Way. Every six months, SPHEREx will survey the entire sky using technologies adapted from Earth satellites and interplanetary spacecraft. The mission will create a map of the entire sky in 102 different color bands, far exceeding the color resolution of previous all-sky maps. It also will identify targets for more detailed study by future missions, such as NASA's James Webb Space Telescope and Wide Field Infrared Survey Telescope.",
+      "max_diameter_meters": 3.28820312
+    },
+    {
+      "name": "Spitzer",
+      "description": "The Spitzer Space Telescope (formerly the Space Infrared Telescope Facility or SIRTF) was the fourth and last of NASA’s “Great Observatories,” and carried a 34-inch (85-centimeter) infrared telescope to study asteroids, comets, planets and distant galaxies. It was retired in January of 2020.",
+      "max_diameter_meters": 7.883532763
+    },
+    {
+      "name": "Stardust",
+      "description": "Its primary goal was to fly by the Comet Wild 2, collect samples of dust from the coma of the comet as well as additional interstellar particles, and then bring the samples to Earth. In 2006, the sample return capsule re-entered Earth's atmosphere and landed in Utah, and the sampes have been studied ever since. After dropping off the samples at Earth, the spacecraft visited Comet Tempel 1 in 2011, and then the mission ended shortly thereafter.",
+      "max_diameter_meters": 5.007898092
+    },
+    {
+      "name": "Starling",
+      "description": "NASA’s Starling mission is advancing the readiness of various technologies for cooperative groups of spacecraft – also known as distributed missions, clusters, or swarms. Starling will demonstrate technologies to enable multipoint science data collection by several small spacecraft flying in swarms.  The six-month mission will use four CubeSats in low-Earth orbit to test four technologies that let spacecraft operate in a synchronized manner without resources from the ground.",
+      "max_diameter_meters": 1.387534022
+    },
+    {
+      "name": "Starlink",
+      "description": "",
+      "max_diameter_meters": 6.41626616
+    },
+    {
+      "name": "STEREO_Ahead",
+      "description": "STEREO (Solar Terrestrial Relations Observatory), the third mission in NASA’s Solar Terrestrial Probes (STP) program, consisted of two space-based observatories to study the structure and evolution of solar storms as they emerge from the Sun and move out through space.\n\n The two spacecraft, one ahead of Earth in its orbit and the other trailing behind, provided the first stereoscopic images of the Sun, and collected data on the nature of its coronal mass ejections (CMEs), represented by large bursts of solar wind, solar plasma, and magnetic fields that are ejected into space. CMEs can disrupt communications, power grids, satellite operations, and air travel here on Earth. The orbital periods of STEREO A and STEREO B were 347 days and 387 days, respectively. The two spacecraft separate from each other at a (combined) annual rate of 44 degrees. At various points, the spacecraft were separated from each other by 90 degrees and 180 degrees. The latter occurred Feb. 6, 2011, allowing the entire Sun to be seen at once for the first time by any set of spacecraft.",
+      "max_diameter_meters": 8.020278692
+    },
+    {
+      "name": "Suomi_NPP",
+      "description": "NPP represents a critical first step in building the next-generation Earth-observing satellite system that will collect data on long-term climate change and short-term weather conditions. NPP is the result of a partnership between NASA, the National Oceanic and Atmospheric Administration, and the Department of Defense.\n\n NPP will extend and improve upon the Earth system data records established by NASA's Earth Observing System fleet of satellites that have provided critical insights into the dynamics of the entire Earth system: clouds, oceans, vegetation, ice, solid Earth and atmosphere.",
+      "max_diameter_meters": 8.958837032
+    },
+    {
+      "name": "SWOT",
+      "description": "SWOT (Surface Water & Ocean Topography) will make the first global survey of Earth's surface water, observe the fine details of the ocean's surface topography, and measure how water bodies change over time.",
+      "max_diameter_meters": 14.34451389
+    },
+    {
+      "name": "TDRS",
+      "description": "Platforms such as satellites, balloons, aircraft, the International Space Station, and remote bases like the Amundsen-Scott South Pole Station are served by the TRDR system, which places satellites in geosynchronous orbit. It was designed to replace an existing worldwide network of ground stations that had supported all of NASA's crewed flight missions and uncrewed satellites in low-Earth orbits. The primary system design goal was to increase the amount of time that these spacecraft were in communication with the ground and improve the amount of data that could be transferred.",
+      "max_diameter_meters": 21.11925507
+    },
+    {
+      "name": "TEMPO",
+      "description": "Hosted on the Intelsat 40E, the TEMPO instrument is a UV-visible spectrometer, and is the first ever space-based instrument to monitor air pollutants hourly across the North American continent during daytime. It collects high-resolution measurements of ozone, nitrogen dioxide and other pollutants, data which will revolutionize air quality forecasts.",
+      "max_diameter_meters": 19.5002985
+    },
+    {
+      "name": "Terra",
+      "description": "Terra carries five instruments that observe Earth’s atmosphere, ocean, land, snow and ice, and energy budget. Taken together, these observations provide unique insight into how the Earth system works and how it is changing. Terra observations reveal humanity’s impact on the planet and provide crucial data about natural hazards like fire and volcanoes. Terra is an international mission carrying instruments from the United States, Japan, and Canada.",
+      "max_diameter_meters": 13.12582612
+    },
+    {
+      "name": "TESS",
+      "description": "The Transiting Exoplanet Survey Satellite (TESS) is the next step in the search for planets outside of our solar system, including those that could support life. The mission will find exoplanets that periodically block part of the light from their host stars, events called transits. TESS will survey 200,000 of the brightest stars near the sun to search for transiting exoplanets. TESS launched on April 18, 2018, aboard a SpaceX Falcon 9 rocket.\n\n TESS scientists expect the mission will catalog thousands of planet candidates and vastly increase the current number of known exoplanets. Of these, approximately 300 are expected to be Earth-sized and super-Earth-sized exoplanets, which are worlds no larger than twice the size of Earth. TESS will find the most promising exoplanets orbiting our nearest and brightest stars, giving future researchers a rich set of new targets for more comprehensive follow-up studies.",
+      "max_diameter_meters": 7.393907309
+    },
+    {
+      "name": "THEMIS",
+      "description": "The THEMIS mission was originally five satellites designed to study the Earth's magnetosphere and the storms it creates. Three of the satellites orbit the Earth within the magnetosphere, while two have been moved into orbit around the Moon. Those two were renamed ARTEMIS for Acceleration, Reconnection, Turbulence and Electrodynamics of the Moon's Interaction with the Sun. THEMIS B became ARTEMIS P1 and THEMIS C became ARTEMIS P2. ARTEMIS P1 and P2 together comprise the THEMIS-ARTEMIS mission. The three THEMIS spacecraft continue to collect data about the sun's interaction with Earth's magnetosphere.",
+      "max_diameter_meters": 7.206683636
+    },
+    {
+      "name": "Trace_Gas_Orbiter",
+      "description": "The ExoMars Trace Gas Orbiter (TGO) was designed to search for trace gases in the Martian atmosphere such as methane, water vapor, nitrogen oxides and acetylene. These gases could provide evidence for possible biological or geological activity on Mars. Organisms on Earth release methane during digestion, although geological processes such as the oxidation of minerals can also release methane.\n\n ExoMars also will monitor seasonal changes in the Martian atmosphere and will look for water-ice beneath the surface. Information gathered during the mission will help decide landing sites for future ESA missions.",
+      "max_diameter_meters": 17.53431892
+    },
+    {
+      "name": "TRMM",
+      "description": "TRMM delivered a unique 17-year dataset of global tropical rainfall and lightning. The TRMM dataset became the space standard for measuring precipitation, and led to research that improved our understanding of tropical cyclone structure and evolution, convective system properties, lightning-storm relationships, climate and weather modeling, and human impacts on rainfall.",
+      "max_diameter_meters": 12.62481594
+    },
+    {
+      "name": "TROPICS",
+      "description": "TROPICS-01, also called TROPICS Pathfinder, was launched nearly two years before the other CubeSats in June of 2021, which allowed preliminary results to be produced and communications systems and data processing algorithms to be tested prior to constellation launch.",
+      "max_diameter_meters": 0.591448694
+    },
+    {
+      "name": "Ulysses",
+      "description": "Ulysses was launched in 1990 and made three \"fast latitude scans\" of the Sun in 1994/1995, 2000/2001, and 2007/2008. In addition, the probe studied several comets. The vehicle was designed to fly a unique trajectory that would use a gravity assist from Jupiter to take it out of the plane of the solar system. Ulysses found that the solar wind has become progressively weaker over the last 50 years.",
+      "max_diameter_meters": 7.73
+    },
+    {
+      "name": "Van_Allen_Probe",
+      "description": "A Van Allen radiation belt is a zone of energetic charged particles, most of which originate from the solar wind, that are captured by and held around a planet by that planet's magnetic field. The Van Allen Probes were built to study these areas of \"space weather\" in more detail.",
+      "max_diameter_meters": 11.95726776
+    },
+    {
+      "name": "Venus_Express",
+      "description": "",
+      "max_diameter_meters": 2.830660582
+    },
+    {
+      "name": "Voyager",
+      "description": "NASA's Voyager 1 was launched after Voyager 2, but because of a faster route, it exited the asteroid belt earlier than its twin, having overtaken Voyager 2 on Dec. 15, 1977. The twin Voyager 1 and 2 spacecraft are exploring where no spacecraft from Earth has flown before. Continuing on their more-than-40-year journey since their 1977 launches, they each are much farther away from Earth and the sun than Pluto. In August 2012, Voyager 1 made the historic entry into interstellar space, the region between stars, filled with material ejected by the death of nearby stars millions of years ago. Voyager 2 entered interstellar space on November 5, 2018 and scientists hope to learn more about this region. Both spacecraft are still sending scientific information about their surroundings through the Deep Space Network, or DSN. The primary mission was the exploration of Jupiter and Saturn. After making a string of discoveries there — such as active volcanoes on Jupiter's moon Io and intricacies of Saturn's rings — the mission was extended. Voyager 2 went on to explore Uranus and Neptune, and is still the only spacecraft to have visited those outer planets. The adventurers' current mission, the Voyager Interstellar Mission (VIM), will explore the outermost edge of the Sun's domain. And beyond.",
+      "max_diameter_meters": 16.90906811
+    },
+    {
+      "name": "WIND",
+      "description": "The Wind spacecraft observes the solar wind that is about to impact the magnetosphere of Earth.",
+      "max_diameter_meters": 25.9
+    },
+    {
+      "name": "XMM_newton",
+      "description": "",
+      "max_diameter_meters": 15.92288208
+    }
+  ],
+  "statistics": {
+    "total": 136,
+    "found": 108,
+    "not_found": 28
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "satellites": {
+    "Artemis": {
+      "inspection_labels": {
+        "type": "Crew exploration capsule (Orion Multi-Purpose Crew Vehicle)",
+        "name_or_mission": "Artemis / Orion MPCV (NASA deep-space crewed capsule for lunar missions)",
+        "function": "Transport crew to cislunar space and lunar orbit as part of NASA's Artemis program for sustained lunar exploration",
+        "status": "nominal",
+        "key_components": [
+          "conical crew module with wide heat-shield base tapering to a narrow top",
+          "four rectangular solar panel wings in X-configuration (white/light-grey cells)",
+          "prominent red NASA 'worm' logo on the cylindrical service module section",
+          "docking port / hatch window assembly at the top of the cone",
+          "ablative heat shield at the wide base (dark thermal protection)",
+          "RCS thruster pods distributed around the service module",
+          "silver/white MLI thermal blanket covering the service module exterior",
+          "circular crew module windows"
+        ],
+        "visual_appearance": "A conical capsule (wide base, narrow top) with a cylindrical service module beneath, four white rectangular solar panel wings deployed in an X-pattern, and a prominent red NASA logo on the side"
+      },
+      "survey_viewpoints": [
+        {
+          "id": "front_hold",
+          "description": "front observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [1.7, 2.3],
+            "y": [-0.3, 0.3],
+            "z": [-0.3, 0.3]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        }
+      ],
+      "service_sites": [
+        {
+          "id": "service_site_a",
+          "description": "front service-ready site",
+          "position_body_m": {"x": 2.0, "y": 0.0, "z": 0.0},
+          "position_tolerance_m": 0.25,
+          "stand_off_distance_range_m": [1.5, 2.5],
+          "preferred_approach_axis_body": {"x": -1.0, "y": 0.0, "z": 0.0},
+          "approach_axis_tolerance_deg": 20.0,
+          "attitude_tolerance_deg": 15.0
+        }
+      ]
+    },
+    "CAPSTONE": {
+      "inspection_labels": {
+        "type": "12U CubeSat (micro-satellite)",
+        "name_or_mission": "CAPSTONE (Cislunar Autonomous Positioning System Technology Operations and Navigation Experiment)",
+        "function": "Lunar NRHO orbit validation and autonomous navigation technology demonstration for NASA Artemis/Gateway program",
+        "status": "nominal",
+        "key_components": [
+          "rectangular main bus (~22x22x34 cm, microwave-oven size)",
+          "two deployable rectangular solar panel wings (dark blue/black solar cells with gold/bronze connector strips)",
+          "silver/gold MLI thermal blanket on top panel (Kapton foil with visible wrinkles)",
+          "small communication antenna module on bus face",
+          "visible electronic port / connector panel on one face (white rectangular element)",
+          "lightweight aluminum frame edges visible at corners"
+        ],
+        "visual_appearance": "A small tan/gold rectangular box with two dark blue rectangular solar panel wings deployed on opposite sides, a silver MLI-covered top panel, and a small orange sensor dot"
+      },
+      "survey_viewpoints": [
+        {
+          "id": "front_hold",
+          "description": "front observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [1.7, 2.3],
+            "y": [-0.3, 0.3],
+            "z": [-0.3, 0.3]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        },
+        {
+          "id": "right_hold",
+          "description": "right-side observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [1.5, 2.5],
+            "y": [1.7, 2.3],
+            "z": [-0.4, 0.4]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        },
+        {
+          "id": "above_hold",
+          "description": "top-down observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [1.5, 2.5],
+            "y": [-0.4, 0.4],
+            "z": [-2.3, -1.7]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        }
+      ],
+      "service_sites": [
+        {
+          "id": "service_site_a",
+          "description": "front service-ready site",
+          "position_body_m": {"x": 2.0, "y": 0.0, "z": 0.0},
+          "position_tolerance_m": 0.25,
+          "stand_off_distance_range_m": [1.5, 2.5],
+          "preferred_approach_axis_body": {"x": -1.0, "y": 0.0, "z": 0.0},
+          "approach_axis_tolerance_deg": 20.0,
+          "attitude_tolerance_deg": 15.0
+        }
+      ]
+    },
+    "CommSat": {
+      "inspection_labels": {
+        "type": "Medium-class communication or deep-space satellite (cylindrical multi-segment bus)",
+        "name_or_mission": "CommSat (generic communication relay / deep-space exploration satellite)",
+        "function": "Communication relay, deep-space data transmission, or scientific exploration requiring high-gain antenna link",
+        "status": "nominal",
+        "key_components": [
+          "cylindrical multi-segment main bus body (silver/grey metallic finish with gold ring joints)",
+          "large parabolic high-gain dish antenna mounted on top of the bus",
+          "two large deployable rectangular solar panel wings (dark blue solar cells with silver grid lines)",
+          "black thruster / engine module at the bottom (dark nozzle assembly)",
+          "gold-colored structural ring segments separating bus sections",
+          "small protruding sensor or antenna elements on the bus surface"
+        ],
+        "visual_appearance": "A silver cylindrical satellite with a prominent parabolic dish antenna on top, two large dark blue rectangular solar panel wings extending from opposite sides, and a black propulsion module at the bottom"
+      },
+      "survey_viewpoints": [
+        {
+          "id": "front_hold",
+          "description": "front observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [1.7, 2.3],
+            "y": [-0.3, 0.3],
+            "z": [-0.3, 0.3]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        }
+      ],
+      "service_sites": [
+        {
+          "id": "service_site_a",
+          "description": "front service-ready site",
+          "position_body_m": {"x": 2.0, "y": 0.0, "z": 0.0},
+          "position_tolerance_m": 0.25,
+          "stand_off_distance_range_m": [1.5, 2.5],
+          "preferred_approach_axis_body": {"x": -1.0, "y": 0.0, "z": 0.0},
+          "approach_axis_tolerance_deg": 20.0,
+          "attitude_tolerance_deg": 15.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.env
+runtime_logs/log/
+runtime_logs/trace/
+node_modules/
+_tmp/
+*.spl
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+.DS_Store
+tta_d2_*/
+phase_b_done.txt

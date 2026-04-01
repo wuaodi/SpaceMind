@@ -1,0 +1,202 @@
+{
+  "satellites": {
+    "CAPSTONE": {
+      "inspection_labels": {
+        "type": "12U CubeSat (micro-satellite)",
+        "name_or_mission": "CAPSTONE (Cislunar Autonomous Positioning System Technology Operations and Navigation Experiment)",
+        "function": "Lunar NRHO orbit validation and autonomous navigation technology demonstration for NASA Artemis/Gateway program",
+        "status": "nominal",
+        "key_components": [
+          "rectangular main bus (~22x22x34 cm, microwave-oven size)",
+          "two deployable rectangular solar panel wings (dark blue/black solar cells with silver grid lines)",
+          "gold/silver MLI thermal blanket wrapping the bus (Kapton foil with visible wrinkles)",
+          "S-band and X-band communication antennas (flat patch or small protruding modules)",
+          "star trackers and sun sensors (small circular apertures on bus surface)",
+          "micro-propulsion thruster nozzles at one end (small conical metal nozzles)"
+        ],
+        "visual_appearance": "A small gold/silver rectangular box with two dark blue rectangular solar panel wings deployed on opposite sides"
+      },
+      "survey_viewpoints": [
+        {
+          "id": "front_hold",
+          "description": "front observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [
+              1.7,
+              2.3
+            ],
+            "y": [
+              -0.3,
+              0.3
+            ],
+            "z": [
+              -0.3,
+              0.3
+            ]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        },
+        {
+          "id": "right_hold",
+          "description": "right-side observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [
+              1.5,
+              2.5
+            ],
+            "y": [
+              1.7,
+              2.3
+            ],
+            "z": [
+              -0.4,
+              0.4
+            ]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        },
+        {
+          "id": "left_hold",
+          "description": "left-side observation viewpoint with the service spacecraft orbiting into the target-left sector while keeping the target near the camera center",
+          "target_region_body_frame_m": {
+            "x": [
+              1.0,
+              3.0
+            ],
+            "y": [
+              -0.5,
+              0.5
+            ],
+            "z": [
+              -0.4,
+              0.4
+            ]
+          },
+          "service_position_sector_deg_range": [
+            -135.0,
+            -45.0
+          ],
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        },
+        {
+          "id": "above_hold",
+          "description": "top-down observation viewpoint",
+          "target_region_body_frame_m": {
+            "x": [
+              1.5,
+              2.5
+            ],
+            "y": [
+              -0.4,
+              0.4
+            ],
+            "z": [
+              -2.3,
+              -1.7
+            ]
+          },
+          "hold_steps_min": 2,
+          "visibility_ratio_min": 0.15
+        }
+      ],
+      "service_sites": [
+        {
+          "id": "service_site_a",
+          "description": "one valid service-ready site; there may be multiple such sites",
+          "position_body_m": {
+            "x": 2.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "position_tolerance_m": 0.25,
+          "stand_off_distance_range_m": [
+            1.5,
+            2.5
+          ],
+          "preferred_approach_axis_body": {
+            "x": -1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "approach_axis_tolerance_deg": 20.0,
+          "attitude_tolerance_deg": 15.0,
+          "notes": "Any site listed here can satisfy pre-service-alignment."
+        }
+      ]
+    },
+    "IBEX": {
+      "inspection_labels": {
+        "type": "Small explorer satellite (microsatellite, MicroStar platform)",
+        "name_or_mission": "IBEX (Interstellar Boundary Explorer)",
+        "function": "Map the interaction between solar wind and interstellar medium by detecting energetic neutral atoms (ENAs) at the heliospheric boundary",
+        "status": "nominal",
+        "key_components": [
+          "octagonal main bus (~58 cm high x 95 cm across, bus-tire size)",
+          "surface-mounted solar array on top deck (always Sun-pointing)",
+          "two ENA imager sensors: IBEX-Hi (gold cylindrical) and IBEX-Lo, perpendicular to solar panels",
+          "long communication antenna protruding from top",
+          "cone-shaped thrusters for spin-axis maintenance",
+          "micro-meteoroid shield over propulsion tanks (silver bump on structure)",
+          "two small square metal heat radiators on front panel"
+        ],
+        "visual_appearance": "A small octagonal satellite (~bus-tire size) with a flat solar-panel-covered top deck, two prominent cylindrical ENA sensor apertures on the side, and a long antenna from the top"
+      }
+    },
+    "BioSentinel": {
+      "inspection_labels": {
+        "type": "6U CubeSat (nano-satellite)",
+        "name_or_mission": "BioSentinel (deep space radiation biology experiment, launched aboard Artemis I)",
+        "function": "Study effects of deep space radiation on living organisms (yeast) beyond Earth's magnetosphere to support future long-duration human exploration",
+        "status": "nominal",
+        "key_components": [
+          "6U CubeSat bus (~10x20x30 cm, shoebox-sized, 14 kg)",
+          "two deployable solar panel wings (30 W total)",
+          "X-band transponder and antenna for Deep Space Network communication",
+          "microfluidics biology payload cards with yeast cells",
+          "Linear Energy Transfer (LET) spectrometer for radiation dosimetry",
+          "onboard data storage and processing electronics"
+        ],
+        "visual_appearance": "A very small elongated rectangular CubeSat (shoebox-sized) with two thin deployable solar panel wings on opposite sides"
+      }
+    },
+    "New_Horizons": {
+      "inspection_labels": {
+        "type": "Medium-class deep space probe (piano-sized, RTG-powered)",
+        "name_or_mission": "New Horizons (first Pluto flyby and Kuiper Belt exploration)",
+        "function": "First reconnaissance of the Pluto system, flyby of Kuiper Belt object Arrokoth, and ongoing exploration of the outer solar system",
+        "status": "nominal",
+        "key_components": [
+          "triangular/wedge-shaped aluminum main bus body with honeycomb panels",
+          "large 2.1-meter high-gain dish antenna (dominant front-facing feature, white/light-colored)",
+          "RTG (Radioisotope Thermoelectric Generator) on a cylindrical boom extending from the rear",
+          "LORRI long-range reconnaissance imager telescope",
+          "Ralph visible/IR imager and Alice UV spectrometer",
+          "SWAP and PEPSSI particle/plasma instruments",
+          "no deployable solar panels (entirely RTG-powered)"
+        ],
+        "visual_appearance": "A compact triangular/wedge-shaped body dominated by a large white 2.1m high-gain dish antenna on front, with a dark cylindrical RTG boom extending from the rear; no solar panels"
+      }
+    },
+    "Huygens": {
+      "inspection_labels": {
+        "type": "Atmospheric entry and descent probe",
+        "name_or_mission": "Huygens (part of Cassini-Huygens mission, first probe to land on Titan)",
+        "function": "Atmospheric descent and surface landing on Saturn's moon Titan; measured atmospheric composition, pressure, temperature, wind profiles, and surface conditions",
+        "status": "nominal (mission complete, landed on Titan January 14 2005)",
+        "key_components": [
+          "disc/saucer-shaped aeroshell with 2.75m diameter conical front heat shield",
+          "back cover shell protecting the descent module",
+          "descent module housing six scientific instruments",
+          "three-stage parachute system (pilot chute, 8.3m main parachute, 3.03m stabilizer drogue)",
+          "DISR descent imager/spectral radiometer camera",
+          "HASI atmospheric structure instrument, GCMS gas chromatograph mass spectrometer, SSP surface science package",
+          "gold/copper-colored MLI thermal insulation on exterior surfaces"
+        ],
+        "visual_appearance": "A saucer/disc-shaped probe (~2.7m diameter) with a conical front heat shield and a domed back cover, gold-colored thermal insulation visible on the exterior"
+      }
+    }
+  }
+}
