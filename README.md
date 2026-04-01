@@ -3,13 +3,13 @@
 **A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing**
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/arXiv-Paper-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper"></a>
-  &nbsp;
-  <a href="https://wuaodi.github.io/SpaceMind/"><img src="https://img.shields.io/badge/Project-Webpage-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Webpage"></a>
-  &nbsp;
-  <a href="https://github.com/wuaodi/SpaceMind"><img src="https://img.shields.io/badge/GitHub-Code-black?style=for-the-badge&logo=github" alt="Code"></a>
-  &nbsp;
-  <a href="SpaceMind_Conference/"><img src="https://img.shields.io/badge/SPAICE_2025-Conference-orange?style=for-the-badge" alt="Conference"></a>
+  <a href="#"><img src="static/icon/arxiv.svg" alt="arXiv" width="16" height="16"></a>
+  &nbsp;<a href="#"><b>Paper</b></a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="https://wuaodi.github.io/SpaceMind/"><img src="static/icon/project.svg" alt="Webpage" width="16" height="16"></a>
+  &nbsp;<a href="https://wuaodi.github.io/SpaceMind/"><b>Webpage</b></a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="SpaceMind_Conference/"><b>Conference Version</b></a>
 </p>
 
 <p align="center">
