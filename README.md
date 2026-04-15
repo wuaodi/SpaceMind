@@ -2,7 +2,7 @@
 
 **A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing**
 
-> **TODO:** ArXiv paper link & demo video coming soon.
+> Demo video: [YouTube](https://youtu.be/X8vZvZIe82U) | Project webpage: [SpaceMind](https://wuaodi.github.io/SpaceMind/)
 
 <p align="center">
   <a href="#"><img src="static/icon/arxiv.svg" alt="arXiv" width="16" height="16"></a>
@@ -10,6 +10,8 @@
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://wuaodi.github.io/SpaceMind/"><img src="static/icon/project.svg" alt="Webpage" width="16" height="16"></a>
   &nbsp;<a href="https://wuaodi.github.io/SpaceMind/"><b>Webpage</b></a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="https://youtu.be/X8vZvZIe82U"><b>Video</b></a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="SpaceMind_Conference/"><b>Conference Version</b></a>
 </p>
