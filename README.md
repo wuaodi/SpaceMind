@@ -5,8 +5,8 @@
 > Demo video: [YouTube](https://youtu.be/X8vZvZIe82U) | Project webpage: [SpaceMind](https://wuaodi.github.io/SpaceMind/)
 
 <p align="center">
-  <a href="#"><img src="static/icon/arxiv.svg" alt="arXiv" width="16" height="16"></a>
-  &nbsp;<a href="#"><b>Paper</b></a>
+  <a href="https://arxiv.org/abs/2604.14399"><img src="static/icon/arxiv.svg" alt="arXiv" width="16" height="16"></a>
+  &nbsp;<a href="https://arxiv.org/abs/2604.14399"><b>Paper</b></a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://wuaodi.github.io/SpaceMind/"><img src="static/icon/project.svg" alt="Webpage" width="16" height="16"></a>
   &nbsp;<a href="https://wuaodi.github.io/SpaceMind/"><b>Webpage</b></a>
@@ -124,13 +124,17 @@ The conference version of this work has been accepted at the **IAA Conference on
 
 If you find this project useful, please consider citing:
 
+Journal preprint: [arXiv:2604.14399](https://arxiv.org/abs/2604.14399)
+
 ```bibtex
 @article{wu2026spacemind,
   title={SpaceMind: A Modular and Self-Evolving Embodied Vision-Language Agent Framework for Autonomous On-orbit Servicing},
   author={Wu, Aodi and Han, Haodong and Luo, Xubo and Wang, Ruisuo and He, Shan and Wan, Xue},
   journal={Acta Astronautica},
   year={2026},
-  note={Under review}
+  note={Under review},
+  eprint={2604.14399},
+  archivePrefix={arXiv}
 }
 ```
 
