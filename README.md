@@ -36,8 +36,9 @@ An MCP-Redis interface layer enables the **same codebase** to operate across UE5
 
 ## Key Results
 
-- **192 closed-loop runs** across 5 satellites, 3 task types, and 2 environments
+- **363 closed-loop runs** across 5 satellites, 4 task types, and 2 environments
 - **90–100% navigation success** under nominal conditions
+- **171 stress-test runs** covering rotating targets, delta-v budgets, actuation/perception degradations, and a fly-around task, scored with continuous metrics (delta-v proxy, path efficiency, pointing latency) and a failure taxonomy
 - **Self-evolution recovery**: 4 of 6 groups recover from failure after a single failed episode
 - **Zero-code-modification transfer** from simulation to physical robot with 100% rendezvous success
 
@@ -58,13 +59,15 @@ SpaceMind/
 │
 ├── SpaceMind_UE5/          # Journal paper: UE5 simulation (AirSim)
 │   ├── host.py             # Main agent loop
-│   ├── run_phase_*.py      # Experiment runners (phases A–D)
+│   ├── run_phase_*.py      # Experiment runners (phases A–E)
 │   ├── config/             # CLI config, framework manifest, evaluation protocol
 │   ├── models/             # VLM client
 │   ├── reasoning/          # Skill gateway, memory, TTA manager, world model reasoner
 │   ├── skills/             # Skill modules
 │   ├── tools/              # MCP server and Redis-based tool implementations
-│   └── environments/       # Satellite pipeline (UE5/AirSim interface)
+│   ├── environments/       # Satellite pipeline (UE5/AirSim interface)
+│   ├── runtime_logs/       # Result parser (continuous metrics + failure taxonomy)
+│   └── results/            # Per-run results of the challenge campaign (JSONL)
 │
 └── SpaceMind_Conference/   # Conference version (SPAICE 2025, accepted)
 ```
@@ -100,6 +103,12 @@ python SpaceMind_UE5/run_phase_b.py
 
 # Phase D: Skill self-evolution experiments
 python SpaceMind_UE5/run_phase_d.py --satellite CAPSTONE --task inspection --condition C2
+
+# Phase E: Challenging scenarios (rotating targets, delta-v budget, degradations, fly-around)
+python SpaceMind_UE5/run_phase_e.py --list                        # print the run queue
+python SpaceMind_UE5/run_phase_e.py                               # run the full queue with resume
+python SpaceMind_UE5/run_phase_e.py --scenario E1 --satellite CAPSTONE
+python SpaceMind_UE5/run_phase_e.py --flyaround                   # append the fly-around queue
 ```
 
 ### Physical Laboratory

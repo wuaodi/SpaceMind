@@ -14,6 +14,13 @@
         "final distance-band validation"
       ]
     },
+    "pose_truth": {
+      "description": "Ground-truth servicer position relative to the target (target fixed at world origin), published by the simulation bridge.",
+      "visibility_to_agent": false,
+      "typical_use": [
+        "final cone-position validation"
+      ]
+    },
     "collision_state": {
       "description": "Collision counter and contact events from the simulator.",
       "visibility_to_agent": false,
@@ -44,7 +51,31 @@
       "failure_conditions": {
         "collision": true,
         "timeout": true,
-        "missing_lidar": true
+        "missing_lidar": true,
+        "delta_v_exceeded": true
+      }
+    },
+    "final_cone_position_success": {
+      "goal_type": "final_cone_position_success",
+      "required_signals": [
+        "pose_truth",
+        "collision_state"
+      ],
+      "success_conditions": {
+        "cone_half_angle_deg": 45.0,
+        "center_distance_range_m": [
+          3.0,
+          7.0
+        ],
+        "collision_free": true
+      },
+      "failure_conditions": {
+        "collision": true,
+        "timeout": true,
+        "missing_pose_truth": true,
+        "out_of_cone": true,
+        "distance_out_of_range": true,
+        "delta_v_exceeded": true
       }
     },
     "inspection_diagnosis_model_score": {
@@ -68,6 +99,7 @@
   "task_to_profile": {
     "rendezvous-hold-front": "final_distance_band_success",
     "search-then-approach": "final_distance_band_success",
-    "inspection-diagnosis": "inspection_diagnosis_model_score"
+    "inspection-diagnosis": "inspection_diagnosis_model_score",
+    "fly-around-above": "final_cone_position_success"
   }
 }

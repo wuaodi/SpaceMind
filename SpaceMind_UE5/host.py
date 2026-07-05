@@ -9,6 +9,7 @@
 import asyncio
 import json
 import logging
+import math
 import os
 import re
 import sys
@@ -37,7 +38,7 @@ from reasoning.skill_gateway import SkillGateway, SkillRouteDecision
 from reasoning.skill_manager import PromptProfile, SkillRuntime
 from reasoning.tta_manager import TTARuntime
 from reasoning.world_model_reasoner import TextWorldModel
-from tools.redis_contract import KEY_LATEST_IMAGE, KEY_LATEST_LIDAR, TOPIC_IMAGE, TOPIC_POSE_CHANGE
+from tools.redis_contract import KEY_LATEST_IMAGE, KEY_LATEST_LIDAR, KEY_LATEST_POSE_TRUTH, TOPIC_IMAGE, TOPIC_POSE_CHANGE
 from tools.server_tools.common import compute_lidar_surface_distance
 
 load_dotenv(ROOT_DOTENV_PATH)
@@ -696,6 +697,56 @@ class MCPOpenAIClient:
                 "collision_detected": collision_detected,
             }
 
+        if goal_type == "final_cone_position_success":
+            # 绕飞任务：用位姿真值判定终局位置是否在目标上方锥内且距离带内
+            pose_snapshot = self._read_latest_snapshot(KEY_LATEST_POSE_TRUTH)
+            success_cfg = profile_cfg.get("success_conditions", {})
+            termination_lower = (termination_reason or "").strip().lower()
+            collision_detected = failure_mode == "collision" or "collision" in termination_lower
+            timed_out = failure_mode == "timeout" or "timeout" in termination_lower
+
+            center_distance_m = None
+            angle_from_vertical_deg = None
+            pos = None
+            if isinstance(pose_snapshot, dict):
+                pos = (pose_snapshot.get("service_spacecraft_pose") or {}).get("position")
+            if isinstance(pos, dict):
+                px, py, pz = float(pos.get("x", 0)), float(pos.get("y", 0)), float(pos.get("z", 0))
+                center_distance_m = math.sqrt(px * px + py * py + pz * pz)
+                if center_distance_m > 1e-6:
+                    # 目标在世界原点，NED 上方为 -z：夹角 = 位置向量与竖直向上轴的偏角
+                    cos_angle = max(-1.0, min(1.0, -pz / center_distance_m))
+                    angle_from_vertical_deg = math.degrees(math.acos(cos_angle))
+
+            if collision_detected:
+                success, failure_reason = False, "collision"
+            elif timed_out:
+                success, failure_reason = False, "timeout"
+            elif center_distance_m is None or angle_from_vertical_deg is None:
+                success, failure_reason = False, "missing_pose_truth"
+            elif angle_from_vertical_deg > float(success_cfg.get("cone_half_angle_deg", 45.0)):
+                success, failure_reason = False, "out_of_cone"
+            elif not _value_in_range(center_distance_m, success_cfg.get("center_distance_range_m")):
+                success, failure_reason = False, "distance_out_of_range"
+            else:
+                success, failure_reason = True, "success"
+
+            logger.info(
+                "FlyAround detail: center_distance_m=%s angle_from_vertical_deg=%s",
+                "na" if center_distance_m is None else f"{center_distance_m:.3f}",
+                "na" if angle_from_vertical_deg is None else f"{angle_from_vertical_deg:.1f}",
+            )
+            return {
+                "goal_type": goal_type,
+                "success": success,
+                "profile": profile_name,
+                "failure_reason": failure_reason,
+                "surface_distance_m": None,
+                "center_distance_m": center_distance_m,
+                "angle_from_vertical_deg": angle_from_vertical_deg,
+                "collision_detected": collision_detected,
+            }
+
         if goal_type == "semantic_model_score":
             diagnosis_text = self._collect_final_diagnosis_text(termination_reason)
             scored = await self._score_inspection_report(profile_name, diagnosis_text)
@@ -1229,6 +1280,8 @@ async def autonomous_navigation_demo():
     failure_mode = "unknown"
     termination_reason = ""
     evaluator_result: Optional[dict[str, Any]] = None
+    deltav_budget = float(Config.deltav_budget or 0.0)
+    deltav_used = 0.0
 
     try:
         while True:
@@ -1256,6 +1309,14 @@ async def autonomous_navigation_demo():
                 )
                 logger.warning("⚠️ Injecting sensing-loop warning (tool=%s, count=%d)", last_sensing_tool, consecutive_sensing_count)
 
+            if deltav_budget > 0:
+                step_task = (
+                    f"{step_task}\n\n[Constraint] Propellant (delta-v) budget: total translation allowance is "
+                    f"{deltav_budget:.1f} m. Used so far: {deltav_used:.2f} m. Remaining: "
+                    f"{max(deltav_budget - deltav_used, 0.0):.2f} m. The mission fails immediately once the "
+                    f"budget is exhausted, so move efficiently and avoid detours."
+                )
+
             result = await client.analyze_image_with_tools(image_data, task=step_task)
             client._record_episode_step(step, image_data, result)
 
@@ -1273,6 +1334,20 @@ async def autonomous_navigation_demo():
                     logger.info("🚀 Position: %s", result["position_change"])
                     consecutive_sensing_count = 0
                     last_sensing_tool = ""
+                    try:
+                        deltav_used += sum(
+                            abs(float(result["position_change"].get(k, 0) or 0)) for k in ("dx", "dy", "dz")
+                        )
+                    except (TypeError, ValueError):
+                        pass
+                    if deltav_budget > 0 and deltav_used > deltav_budget:
+                        failure_mode = "delta_v_exceeded"
+                        termination_reason = (
+                            f"Delta-v budget exhausted ({deltav_used:.2f} m used > {deltav_budget:.1f} m budget)"
+                        )
+                        logger.warning("⛽ Delta-v budget exhausted (%.2f/%.1f m), forcing termination",
+                                       deltav_used, deltav_budget)
+                        break
                 elif result.get("attitude_change"):
                     logger.info("🔄 Attitude: %s", result["attitude_change"])
                     consecutive_sensing_count = 0
@@ -1307,7 +1382,7 @@ async def autonomous_navigation_demo():
         client.latest_evaluator_result = evaluator_result
         if evaluator_result:
             client._log_evaluator_result(evaluator_result)
-            if evaluator_result.get("goal_type") == "final_distance_band_success":
+            if evaluator_result.get("goal_type") in ("final_distance_band_success", "final_cone_position_success"):
                 episode_success = bool(evaluator_result.get("success", False))
                 evaluator_failure_reason = str(evaluator_result.get("failure_reason", "") or "")
                 if episode_success:
@@ -1321,6 +1396,18 @@ async def autonomous_navigation_demo():
                 }:
                     failure_mode = evaluator_failure_reason
 
+        if failure_mode == "delta_v_exceeded":
+            episode_success = False
+        if evaluator_result is not None:
+            evaluator_result["delta_v_used_m"] = round(deltav_used, 3)
+            if deltav_budget > 0:
+                evaluator_result["delta_v_budget_m"] = deltav_budget
+        logger.info(
+            "Delta-v summary: used=%.3f budget=%s exceeded=%s",
+            deltav_used,
+            f"{deltav_budget:.1f}" if deltav_budget > 0 else "none",
+            failure_mode == "delta_v_exceeded",
+        )
         logger.info("✅ Mission success: %s", episode_success)
         await client.cleanup()
         move_summary = client.history.get_move_summary()

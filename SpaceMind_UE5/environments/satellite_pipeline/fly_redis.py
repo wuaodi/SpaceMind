@@ -14,7 +14,10 @@
 启动示例：
 python fly_redis.py --init_x -11 --init_y 0 --init_z 0
 python fly_redis.py --init_x -11 --init_y 0 --init_z 0 --init_yaw 1.57   # 目标不在视野内
-python fly_redis.py --noise --init_x -11 --init_y 0 --init_z 0
+python fly_redis.py --noise --init_x -11 --init_y 0 --init_z 0           # E3N 执行噪声
+python fly_redis.py --fault_axis dy --fault_scale 0.5 --init_x -11       # E3F 推力故障
+python fly_redis.py --lidar_dropout 0.3 --init_x -11                     # E4L LiDAR 间歇失效
+python fly_redis.py --exposure_disturb_step 3 --exposure_disturb_value -3 --init_x -11  # E4E 曝光扰动
 """
 import argparse
 import airsim
@@ -90,7 +93,9 @@ def calculate_camera_pose(x, y, z, pitch, roll, yaw):
 
 
 class AirSimDataCollector:
-    def __init__(self, init_x=-11, init_y=0, init_z=0, init_yaw=0.0, enable_noise=False, noise_pos=0.1, noise_att=0.02):
+    def __init__(self, init_x=-11, init_y=0, init_z=0, init_yaw=0.0, enable_noise=False, noise_pos=0.1, noise_att=0.02,
+                 fault_axis="", fault_scale=1.0, lidar_dropout=0.0,
+                 exposure_disturb_step=0, exposure_disturb_value=0.0):
         self.client = airsim.MultirotorClient()
         self.client.confirmConnection()
         self.client.enableApiControl(True)
@@ -116,6 +121,17 @@ class AirSimDataCollector:
         self.enable_noise = enable_noise
         self.noise_pos = noise_pos
         self.noise_att = noise_att
+
+        # Phase E 退化注入开关（E3F 推力故障 / E4L LiDAR 间歇失效 / E4E 中途曝光扰动）
+        self.fault_axis = fault_axis  # "dx"/"dy"/"dz"，空串关闭
+        self.fault_scale = fault_scale
+        self.lidar_dropout = lidar_dropout  # 概率 p，0 关闭
+        self.exposure_disturb_step = exposure_disturb_step  # 第 N 条 pose_change 后触发一次，0 关闭
+        self.exposure_disturb_value = exposure_disturb_value
+        self.pose_change_count = 0
+        self.exposure_disturbed = False
+        # 独立随机源：collect_data 采样处 random.seed(42) 会重置全局 random，不能共用
+        self.dropout_rng = random.Random()
 
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         self.base_path = Path(f"D:/dataset/{timestamp}")
@@ -194,6 +210,10 @@ class AirSimDataCollector:
 
         lidar_data = self.client.getLidarData()
         points = lidar_data.point_cloud
+
+        if self.lidar_dropout > 0 and self.dropout_rng.random() < self.lidar_dropout:
+            points = []
+            log(f"LiDAR dropout injected (p={self.lidar_dropout})")
 
         if points:
             lidar_filename = f"{timestamp}.asc"
@@ -322,6 +342,32 @@ class AirSimDataCollector:
                             dpitch += np.random.normal(0, self.noise_att)
                             droll += np.random.normal(0, self.noise_att)
                             dyaw += np.random.normal(0, self.noise_att)
+                            log(f"Noise injected, actual delta: dx={dx:.3f}, dy={dy:.3f}, dz={dz:.3f}, "
+                                f"dpitch={dpitch:.4f}, droll={droll:.4f}, dyaw={dyaw:.4f}")
+
+                        if self.fault_axis in ("dx", "dy", "dz"):
+                            before = {"dx": dx, "dy": dy, "dz": dz}[self.fault_axis]
+                            if self.fault_axis == "dx":
+                                dx *= self.fault_scale
+                            elif self.fault_axis == "dy":
+                                dy *= self.fault_scale
+                            else:
+                                dz *= self.fault_scale
+                            after = {"dx": dx, "dy": dy, "dz": dz}[self.fault_axis]
+                            if before != 0:
+                                log(f"Thrust fault injected: {self.fault_axis} {before:.3f} -> {after:.3f} "
+                                    f"(scale={self.fault_scale})")
+
+                        self.pose_change_count += 1
+                        if (self.exposure_disturb_step > 0 and not self.exposure_disturbed
+                                and self.pose_change_count >= self.exposure_disturb_step):
+                            self.exposure_disturbed = True
+                            try:
+                                self.client.simRunConsoleCommand(f"r.ExposureOffset {self.exposure_disturb_value}")
+                                log(f"Exposure disturbance injected at pose_change #{self.pose_change_count}: "
+                                    f"ExposureOffset -> {self.exposure_disturb_value}")
+                            except Exception:
+                                log("Exposure disturbance failed")
 
                         w = current_orientation.w_val
                         x = current_orientation.x_val
@@ -404,12 +450,23 @@ if __name__ == "__main__":
     parser.add_argument('--init_z', type=float, default=0, help='初始世界坐标 z；默认与目标等高')
     parser.add_argument('--init_yaw', type=float, default=0, help='初始航向角(弧度)；0=朝向目标，1.57≈90°偏转使目标不在视野内')
     parser.add_argument('--init_exposure', type=float, default=0, help='初始曝光偏移；负=欠曝，正=过曝，0=默认')
+    parser.add_argument('--fault_axis', default='', choices=['', 'dx', 'dy', 'dz'],
+                        help='E3F 推力故障轴，指定轴的平移只执行 fault_scale 倍')
+    parser.add_argument('--fault_scale', type=float, default=1.0, help='E3F 故障轴执行比例，如 0.5')
+    parser.add_argument('--lidar_dropout', type=float, default=0.0, help='E4L LiDAR 间歇失效概率 p，按次发布空点云')
+    parser.add_argument('--exposure_disturb_step', type=int, default=0,
+                        help='E4E 第 N 条 pose_change 后注入一次曝光突变，0 关闭')
+    parser.add_argument('--exposure_disturb_value', type=float, default=-3.0, help='E4E 突变后的 ExposureOffset 值')
     args = parser.parse_args()
 
     collector = AirSimDataCollector(
         init_x=args.init_x, init_y=args.init_y, init_z=args.init_z,
         init_yaw=args.init_yaw,
-        enable_noise=args.noise, noise_pos=args.noise_pos, noise_att=args.noise_att
+        enable_noise=args.noise, noise_pos=args.noise_pos, noise_att=args.noise_att,
+        fault_axis=args.fault_axis, fault_scale=args.fault_scale,
+        lidar_dropout=args.lidar_dropout,
+        exposure_disturb_step=args.exposure_disturb_step,
+        exposure_disturb_value=args.exposure_disturb_value
     )
     collector._init_exposure = args.init_exposure
     collector.fly_control()

@@ -60,6 +60,23 @@
       "subtasks": [
         "inspection-diagnosis"
       ]
+    },
+    "fly-around": {
+      "description": "Fly around the target from a frontal start and station directly above it within an overhead cone and distance band.",
+      "coverage": [
+        "relative_navigation",
+        "hold_stability"
+      ],
+      "primary_metrics": [
+        "success_rate",
+        "collision_rate",
+        "avg_steps",
+        "avg_tool_calls",
+        "final_center_distance_m"
+      ],
+      "subtasks": [
+        "fly-around-above"
+      ]
     }
   },
   "tool_profiles": {
@@ -210,6 +227,27 @@
         "task-inspection",
         "perception-strategy"
       ]
+    },
+    "fly-around-above": {
+      "task_family": "fly-around",
+      "evaluation_profile": "final_cone_position_success",
+      "capability_tags": [
+        "relative_navigation",
+        "hold_stability"
+      ],
+      "default_tool_profile": "hybrid_nav",
+      "benchmark_goal": "final position within 45-degree overhead cone above the target and 3-7m from target center, collision-free",
+      "supported_tool_profiles": [
+        "oracle_full",
+        "hybrid_nav",
+        "hybrid_nav_with_code",
+        "vision_only"
+      ],
+      "user_task": "Mission: The target is in view ahead of you. Fly around the target and station yourself directly ABOVE it, about 5 meters from its center. Success requires ending nearly overhead (within 45 degrees of the vertical axis through the target) at 3-7 meters from the target center, without collision. Keep the target observable while maneuvering: moving up is negative dz, and pitching the nose down lets you look at a target below you. Call terminate_navigation once you are holding position above the target.",
+      "fallback_dynamic_skills": [
+        "task-fly-around",
+        "distance-strategy"
+      ]
     }
   },
   "modes": {
@@ -241,6 +279,7 @@
       "task-rendezvous",
       "task-search-approach",
       "task-inspection",
+      "task-fly-around",
       "distance-strategy",
       "target-recovery",
       "perception-strategy",

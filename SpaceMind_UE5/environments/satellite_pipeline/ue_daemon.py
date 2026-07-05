@@ -89,6 +89,9 @@ def _main_thread_tick(delta_seconds: float) -> None:
         sat = str(_current_cmd.get("sat_name", "")).strip()
         _log(f"[ue_daemon] placing satellite: {sat}")
         try:
+            # 热重载，磁盘上的 ue_place_satellite.py 改动无需重启 daemon
+            import importlib
+            importlib.reload(sat_tool)
             sat_tool.place_selected_satellite(sat)
             _log(f"[ue_daemon] place done, waiting 5s...")
             _wait_until = time.time() + 5.0
