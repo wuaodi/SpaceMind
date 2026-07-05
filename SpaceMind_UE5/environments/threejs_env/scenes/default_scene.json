@@ -1,0 +1,69 @@
+{
+  "scene_name": "space_fbx_default",
+  "sim_hz": 20,
+  "publish_hz": 2,
+  "capture_width": 640,
+  "capture_height": 480,
+  "camera_offset_body_m": {
+    "x": 1.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "noise": {
+    "enabled": false,
+    "position_sigma_m": 0.1,
+    "attitude_sigma_rad": 0.02
+  },
+  "injection": {
+    "fault_axis": "",
+    "fault_scale": 1.0,
+    "lidar_dropout": 0.0,
+    "exposure_disturb_step": 0,
+    "exposure_disturb_value": -3.0
+  },
+  "servicer": {
+    "body_size_m": {
+      "x": 0.9,
+      "y": 0.7,
+      "z": 0.7
+    },
+    "initial_state": {
+      "position_world_m": {
+        "x": -11.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "attitude_rpy_rad": {
+        "pitch": 0.0,
+        "roll": 0.0,
+        "yaw": 0.0
+      }
+    }
+  },
+  "target": {
+    "name": "CAPSTONE",
+    "spin_deg_s": 0.0
+  },
+  "satellites": {
+    "BioSentinel": {
+      "model_url": "/models/BioSentinel.fbx",
+      "max_diameter_m": 0.867
+    },
+    "CAPSTONE": {
+      "model_url": "/models/CAPSTONE.fbx",
+      "max_diameter_m": 1.426
+    },
+    "Huygens": {
+      "model_url": "/models/Huygens.fbx",
+      "max_diameter_m": 2.615
+    },
+    "IBEX": {
+      "model_url": "/models/IBEX.fbx",
+      "max_diameter_m": 1.546
+    },
+    "New_Horizons": {
+      "model_url": "/models/New_Horizons.fbx",
+      "max_diameter_m": 2.976
+    }
+  }
+}

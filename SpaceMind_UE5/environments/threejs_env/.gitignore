@@ -1,0 +1,7 @@
+node_modules/
+dist/
+app/dist/
+logs/*.jsonl
+logs/*.log
+logs/*.png
+.npm-cache/

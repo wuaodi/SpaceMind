@@ -1,0 +1,23 @@
+{
+  "name": "spacemind-threejs-env",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:bridge": "node --experimental-strip-types bridge/index.ts",
+    "dev:app": "vite --config vite.config.ts",
+    "build:app": "vite build --config vite.config.ts",
+    "check:import": "node --experimental-strip-types -e \"Promise.all([import('./shared/math.ts'), import('./shared/protocol.ts'), import('./sim_core/RelativeOrbitSim.ts'), import('./bridge/index.ts')]).then(() => process.exit(0))\""
+  },
+  "dependencies": {
+    "redis": "^4.7.0",
+    "three": "^0.179.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10"
+  }
+}

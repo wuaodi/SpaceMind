@@ -65,7 +65,9 @@ SpaceMind/
 │   ├── reasoning/          # Skill gateway, memory, TTA manager, world model reasoner
 │   ├── skills/             # Skill modules
 │   ├── tools/              # MCP server and Redis-based tool implementations
-│   ├── environments/       # Satellite pipeline (UE5/AirSim interface)
+│   ├── environments/
+│   │   ├── satellite_pipeline/  # UE5/AirSim interface (requires your own UE5 project)
+│   │   └── threejs_env/         # Lightweight Three.js environment (runs out of the box)
 │   ├── runtime_logs/       # Result parser (continuous metrics + failure taxonomy)
 │   └── results/            # Per-run results of the challenge campaign (JSONL)
 │
@@ -90,9 +92,39 @@ cp .env.example .env
 
 ## Usage
 
+### Quick Start without UE5 (Three.js Environment)
+
+The UE5 assets are not distributed with this repository. To let anyone run the full agent stack out of the box, `SpaceMind_UE5/environments/threejs_env/` provides a lightweight browser-based environment that speaks the exact same Redis interface as the UE5/AirSim pipeline: RGB images, part-level segmentation, LiDAR point clouds, pose truth, exposure control, and the stress-injection switches (target spin, actuation noise, thruster fault, LiDAR dropout, exposure disturbance). `host.py`, tools, and skills run unmodified against it.
+
+The five target satellites (BioSentinel, CAPSTONE, Huygens, IBEX, New Horizons) are rendered from [NASA 3D Resources](https://science.nasa.gov/3d-resources/) models (public domain), scaled to the same physical dimensions used in the paper experiments.
+
+Requires Node.js, Python, and a local Redis server.
+
+```bash
+# 1. Start the environment (installs npm deps, builds the page, opens the browser)
+cd SpaceMind_UE5/environments/threejs_env
+python launch_env.py
+
+# Optional environment switches
+python launch_env.py --satellite IBEX                    # pick a target satellite
+python launch_env.py --spin_deg_s 0.5                    # rotating target (E1)
+python launch_env.py --noise                             # actuation noise (E3N)
+python launch_env.py --fault_axis dy --fault_scale 0.5   # thruster fault (E3F)
+python launch_env.py --lidar_dropout 0.3                 # LiDAR dropout (E4L)
+
+# 2. Verify the Redis link
+python self_test.py --scenario smoke
+
+# 3. Run the agent as usual
+cd ../..
+python host.py --task rendezvous-hold-front --tool_profile oracle_full
+```
+
+Note that this environment uses simplified rendering and geometry sampling; it is intended for running and extending the framework, not for reproducing the exact numbers reported in the paper, which were obtained in UE5.
+
 ### UE5 Simulation
 
-Requires a running UE5 environment with AirSim plugin and Redis server.
+Requires a running UE5 environment with AirSim plugin and Redis server. Build your own UE5 project with the AirSim plugin and import the NASA satellite models under `/Game/Meshes/Spacecraft_136/<SatelliteName>/`; the scripts in `environments/satellite_pipeline/` handle satellite placement and scene control.
 
 ```bash
 # Phase A: Standard reasoning mode evaluation
@@ -103,12 +135,6 @@ python SpaceMind_UE5/run_phase_b.py
 
 # Phase D: Skill self-evolution experiments
 python SpaceMind_UE5/run_phase_d.py --satellite CAPSTONE --task inspection --condition C2
-
-# Phase E: Challenging scenarios (rotating targets, delta-v budget, degradations, fly-around)
-python SpaceMind_UE5/run_phase_e.py --list                        # print the run queue
-python SpaceMind_UE5/run_phase_e.py                               # run the full queue with resume
-python SpaceMind_UE5/run_phase_e.py --scenario E1 --satellite CAPSTONE
-python SpaceMind_UE5/run_phase_e.py --flyaround                   # append the fly-around queue
 ```
 
 ### Physical Laboratory
