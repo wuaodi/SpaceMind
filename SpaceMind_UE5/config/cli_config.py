@@ -135,6 +135,7 @@ class Config:
     noise = False
     enable_tta = False
     tta_workspace = "tta_workspace"
+    deltav_budget = 0.0  # 平移量预算（米），0 表示不限制；Phase E 挑战实验用
 
     @classmethod
     def get_task_choices(cls) -> tuple[str, ...]:
@@ -207,6 +208,8 @@ class Config:
         parser.add_argument("--noise", action="store_true")
         parser.add_argument("--enable_tta", action="store_true")
         parser.add_argument("--tta_workspace", default="tta_workspace")
+        parser.add_argument("--deltav_budget", type=float, default=0.0,
+                            help="平移量预算（米），超出即任务失败；0 表示不限制")
         parsed = parser.parse_args(args)
 
         raw_free_task = parsed.free_task if isinstance(parsed.free_task, str) else ""
@@ -225,6 +228,7 @@ class Config:
         cls.enable_world_model = parsed.enable_world_model
         cls.noise = parsed.noise
         cls.enable_tta = parsed.enable_tta
+        cls.deltav_budget = max(parsed.deltav_budget, 0.0)
 
         if free_task_text:
             cls.task_kind = "freeform"

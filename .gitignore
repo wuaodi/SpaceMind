@@ -1,8 +1,8 @@
 __pycache__/
 *.pyc
 .env
-runtime_logs/log/
-runtime_logs/trace/
+**/runtime_logs/log/
+**/runtime_logs/trace/
 node_modules/
 _tmp/
 *.spl

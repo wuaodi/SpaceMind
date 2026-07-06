@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpaceMind Trace Viewer</title>
+  <style>
+    :root {
+      --bg: #f2efe8;
+      --panel: #fffdf8;
+      --ink: #1d2a33;
+      --muted: #61707d;
+      --accent: #0e7c66;
+      --line: #d7d2c7;
+      --error: #b42318;
+      --code: #f5f1e8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(14,124,102,0.12), transparent 28%),
+        linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    header {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.84);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0.02em;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .btn, label.file {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    label.file input { display: none; }
+    main {
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .summary, .entry {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(29, 42, 51, 0.05);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .stat {
+      padding: 14px 16px;
+      background: #faf7f1;
+      border-radius: 14px;
+      border: 1px solid #ece6db;
+      min-width: 0;
+    }
+    .stat b {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .stat-value {
+      font-size: 15px;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .entry-head h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(14,124,102,0.25);
+      background: rgba(14,124,102,0.08);
+      color: var(--accent);
+      margin-right: 6px;
+    }
+    .error {
+      color: var(--error);
+      font-weight: 600;
+    }
+    .section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #efe8dc;
+    }
+    .section h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    pre {
+      margin: 0;
+      background: var(--code);
+      border-radius: 14px;
+      padding: 14px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.5;
+      border: 1px solid #ece5d8;
+    }
+    .msg-list {
+      display: grid;
+      gap: 12px;
+    }
+    .msg {
+      border: 1px solid #ece6db;
+      border-radius: 16px;
+      padding: 14px;
+      background: #fcfaf5;
+    }
+    .msg-role {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .image-block {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .image-block img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 1px solid #e8e0d4;
+      background: white;
+    }
+    details {
+      border: 1px solid #ece6db;
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #fbf8f2;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .fold {
+      margin-top: 14px;
+      padding: 0;
+      overflow: hidden;
+      background: #fcfaf5;
+    }
+    .fold > summary {
+      list-style: none;
+      padding: 14px 16px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .fold > summary::-webkit-details-marker {
+      display: none;
+    }
+    .fold-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .fold-meta {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .fold-body {
+      padding: 0 16px 16px;
+      border-top: 1px solid #efe8dc;
+      display: grid;
+      gap: 12px;
+    }
+    .subfold {
+      margin-top: 0;
+      padding: 0;
+      background: #fffdf8;
+    }
+    .subfold > summary {
+      list-style: none;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .subfold > summary::-webkit-details-marker {
+      display: none;
+    }
+    .subfold-body {
+      padding: 0 14px 14px;
+      border-top: 1px solid #efe8dc;
+      display: grid;
+      gap: 10px;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .chip {
+      display: inline-block;
+      border: 1px solid #e4ddd0;
+      background: #f6f2e9;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 60px 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SpaceMind Trace Viewer</h1>
+    <div class="sub">查看每次发给大模型的完整请求、工具定义、图片内容、模型回复和报错。</div>
+    <div class="controls">
+      <button class="btn" id="reloadBtn" type="button">刷新页面</button>
+      <label class="file">
+        载入历史 trace
+        <input id="fileInput" type="file" accept=".jsonl,.json,.js">
+      </label>
+    </div>
+  </header>
+  <main>
+    <section class="summary" id="summary"></section>
+    <section id="entries"></section>
+  </main>
+
+  <script src="../trace/latest_trace.js"></script>
+  <script>
+    const summaryEl = document.getElementById("summary");
+    const entriesEl = document.getElementById("entries");
+    const fileInput = document.getElementById("fileInput");
+    const reloadBtn = document.getElementById("reloadBtn");
+
+    reloadBtn.addEventListener("click", () => window.location.reload());
+    fileInput.addEventListener("change", async (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const text = await file.text();
+      renderBundle(parseTraceText(text, file.name));
+      event.target.value = "";
+    });
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function parseTraceText(text, fileName = "") {
+      const trimmed = text.trim();
+      if (!trimmed) return { run_id: "", trace_file: "", updated_at: "", entries: [] };
+
+      if (trimmed.startsWith("window.__TRACE_DATA__")) {
+        const match = trimmed.match(/window\.__TRACE_DATA__\s*=\s*(.*);?$/s);
+        if (match) return JSON.parse(match[1].trim().replace(/;$/, ""));
+      }
+
+      try {
+        if (trimmed.startsWith("{") && !trimmed.includes("\n{")) {
+          const parsed = JSON.parse(trimmed);
+          return parsed.entries
+            ? parsed
+            : { run_id: fileName || "manual-json", trace_file: fileName || "manual load", updated_at: "", entries: [parsed] };
+        }
+      } catch (error) {
+        console.warn("Single JSON parse failed, fallback to JSONL:", error);
+      }
+
+      const entries = trimmed
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => JSON.parse(line));
+      return {
+        run_id: fileName || "manual-jsonl",
+        trace_file: fileName || "manual load",
+        updated_at: "",
+        entries,
+      };
+    }
+
+    function toolCallCount(entry) {
+      return entry?.response?.tool_calls?.length || 0;
+    }
+
+    function renderMessageContent(content) {
+      if (Array.isArray(content)) {
+        return content.map((item) => {
+          if (item.type === "text") {
+            return `
+              <details class="subfold">
+                <summary>
+                  <span>Text</span>
+                  <span class="fold-meta">${escapeHtml((item.text || "").slice(0, 80) || "empty")}</span>
+                </summary>
+                <div class="subfold-body">
+                  <pre>${escapeHtml(item.text)}</pre>
+                </div>
+              </details>
+            `;
+          }
+          if (item.type === "image_url") {
+            const url = item.image_url?.url || "";
+            const base64 = url.includes(",") ? url.split(",")[1] : url;
+            return `
+              <details class="subfold">
+                <summary>
+                  <span>Image</span>
+                  <span class="fold-meta">preview + base64</span>
+                </summary>
+                <div class="subfold-body">
+                  <div class="image-block">
+                    <img src="${escapeHtml(url)}" alt="trace image">
+                  </div>
+                  <details class="subfold">
+                    <summary>
+                      <span>Raw image_url / base64</span>
+                      <span class="fold-meta">${escapeHtml(base64.slice(0, 48))}...</span>
+                    </summary>
+                    <div class="subfold-body">
+                      <pre>${escapeHtml(url)}</pre>
+                      <pre>${escapeHtml(base64)}</pre>
+                    </div>
+                  </details>
+                </div>
+              </details>
+            `;
+          }
+          return `
+            <details class="subfold">
+              <summary>
+                <span>${escapeHtml(item.type || "Content")}</span>
+                <span class="fold-meta">raw json</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(JSON.stringify(item, null, 2))}</pre>
+              </div>
+            </details>
+          `;
+        }).join("");
+      }
+      return `<pre>${escapeHtml(typeof content === "string" ? content : JSON.stringify(content, null, 2))}</pre>`;
+    }
+
+    function renderMessages(messages) {
+      if (!messages.length) {
+        return `<pre>[]</pre>`;
+      }
+      return `
+        <div class="msg-list">
+          ${messages.map((msg, idx) => `
+            <details class="subfold">
+              <summary>
+                <span>Message ${idx + 1}: ${escapeHtml(msg.role || "unknown")}</span>
+                <span class="fold-meta">${Array.isArray(msg.content) ? msg.content.length + " parts" : "plain text"}</span>
+              </summary>
+              <div class="subfold-body">
+                ${renderMessageContent(msg.content)}
+              </div>
+            </details>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderInputSection(entry, request, messages, response, promptProfile, activatedSkills) {
+      const hasTools = Array.isArray(request.tools) && request.tools.length > 0;
+      const inputParts = [
+        "Skill Choice",
+        "Messages",
+        "Model Params",
+        hasTools ? `Tools x${request.tools.length}` : "Tools x0",
+      ];
+      return `
+        <details class="fold">
+          <summary>
+            <span class="fold-title">Input</span>
+            <span class="fold-meta">${escapeHtml(inputParts.join(" + "))}</span>
+          </summary>
+          <div class="fold-body">
+            <details class="subfold">
+              <summary>
+                <span>Skill Choice</span>
+                <span class="fold-meta">${activatedSkills.length} skills</span>
+              </summary>
+              <div class="subfold-body">
+                <div class="chip-row">
+                  ${(activatedSkills.length ? activatedSkills : ["no skills"]).map((skill) => `<span class="chip">${escapeHtml(skill)}</span>`).join("")}
+                </div>
+              </div>
+            </details>
+
+            <details class="subfold">
+              <summary>
+                <span>Messages</span>
+                <span class="fold-meta">${messages.length} messages</span>
+              </summary>
+              <div class="subfold-body">
+                ${renderMessages(messages)}
+              </div>
+            </details>
+
+            <details class="subfold">
+              <summary>
+                <span>Model Params</span>
+                <span class="fold-meta">${escapeHtml(entry.model || "")}</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(JSON.stringify({
+                  model: entry.model,
+                  base_url: entry.base_url,
+                  max_tokens: entry.max_tokens,
+                  temperature: entry.temperature,
+                  top_p: entry.top_p,
+                  tool_choice: entry.tool_choice
+                }, null, 2))}</pre>
+              </div>
+            </details>
+
+            <details class="subfold">
+              <summary>
+                <span>Tools Sent</span>
+                <span class="fold-meta">${request.tools ? request.tools.length : 0} tools</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(JSON.stringify(request.tools || [], null, 2))}</pre>
+              </div>
+            </details>
+          </div>
+        </details>
+      `;
+    }
+
+    function renderOutputSection(entry, response) {
+      const outputParts = [];
+      if (response.content) outputParts.push("Assistant Text");
+      if (response.tool_calls?.length) outputParts.push(`Tool Calls x${response.tool_calls.length}`);
+      outputParts.push("Raw Response");
+      if (entry.error) outputParts.push("Error");
+      return `
+        <details class="fold">
+          <summary>
+            <span class="fold-title">Output</span>
+            <span class="fold-meta">${escapeHtml(outputParts.join(" + ") || "Raw Response")}</span>
+          </summary>
+          <div class="fold-body">
+            <details class="subfold">
+              <summary>
+                <span>Assistant Text</span>
+                <span class="fold-meta">${escapeHtml((response.content || "").slice(0, 80) || "empty")}</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(response.content || "")}</pre>
+              </div>
+            </details>
+
+            <details class="subfold">
+              <summary>
+                <span>Tool Calls</span>
+                <span class="fold-meta">${response.tool_calls?.length || 0} calls</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(JSON.stringify(response.tool_calls || [], null, 2))}</pre>
+              </div>
+            </details>
+
+            <details class="subfold">
+              <summary>
+                <span>Raw Response</span>
+                <span class="fold-meta">full json</span>
+              </summary>
+              <div class="subfold-body">
+                <pre>${escapeHtml(JSON.stringify(response, null, 2))}</pre>
+              </div>
+            </details>
+
+            ${entry.error ? `
+              <details class="subfold">
+                <summary>
+                  <span>Error</span>
+                  <span class="fold-meta">${escapeHtml(entry.error.slice(0, 80))}</span>
+                </summary>
+                <div class="subfold-body">
+                  <pre class="error">${escapeHtml(entry.error)}</pre>
+                </div>
+              </details>
+            ` : ""}
+          </div>
+        </details>
+      `;
+    }
+
+    function renderEntry(entry, index, total) {
+      const request = entry.request || {};
+      const messages = request.messages || [];
+      const response = entry.response || {};
+      const promptProfile = entry.prompt_profile || {};
+      const activatedSkills = Array.isArray(entry.activated_skills) ? entry.activated_skills : [];
+      return `
+        <article class="entry">
+          <div class="entry-head">
+            <div>
+              <h2>Step ${total - index}</h2>
+              <div class="sub">${escapeHtml(entry.timestamp || "")}</div>
+            </div>
+            <div>
+              <span class="tag">${escapeHtml(entry.call_type || "")}</span>
+              <span class="tag">${escapeHtml(entry.model || "")}</span>
+              <span class="tag">tools: ${request.tools ? request.tools.length : 0}</span>
+              <span class="tag">tool_calls: ${toolCallCount(entry)}</span>
+            </div>
+          </div>
+
+          ${renderInputSection(entry, request, messages, response, promptProfile, activatedSkills)}
+          ${renderOutputSection(entry, response)}
+        </article>
+      `;
+    }
+
+    function renderBundle(bundle) {
+      const entries = Array.isArray(bundle?.entries) ? bundle.entries : [];
+      const errorCount = entries.filter((entry) => entry.error).length;
+      summaryEl.innerHTML = `
+        <h2 style="margin:0;">当前 Trace</h2>
+        <div class="summary-grid">
+          <div class="stat">
+            <b>Run ID</b>
+            <div class="stat-value">${escapeHtml(bundle?.run_id || "未命名")}</div>
+          </div>
+          <div class="stat">
+            <b>Updated</b>
+            <div class="stat-value">${escapeHtml(bundle?.updated_at || "未知")}</div>
+          </div>
+          <div class="stat">
+            <b>Entries</b>
+            <div class="stat-value">${entries.length} total / ${errorCount} error</div>
+          </div>
+        </div>
+      `;
+      if (!entries.length) {
+        entriesEl.innerHTML = `
+          <div class="empty">
+            还没有 trace 数据。<br>
+            先运行一次 <code>host.py</code>，然后重新打开本页；或者手动载入 <code>../trace/model_trace_*.jsonl</code>。
+          </div>
+        `;
+        return;
+      }
+      entriesEl.innerHTML = entries
+        .slice()
+        .reverse()
+        .map((entry, index) => renderEntry(entry, index, entries.length))
+        .join("");
+    }
+
+    renderBundle(window.__TRACE_DATA__ || { run_id: "", trace_file: "", updated_at: "", entries: [] });
+  </script>
+</body>
+</html>

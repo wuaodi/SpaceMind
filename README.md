@@ -92,6 +92,8 @@ cp .env.example .env
 
 ## Usage
 
+See [TESTING.md](TESTING.md) for a step-by-step guide covering setup, environment launch, link verification, agent runs, stress injection, and result parsing.
+
 ### Quick Start without UE5 (Three.js Environment)
 
 The UE5 assets are not distributed with this repository. To let anyone run the full agent stack out of the box, `SpaceMind_UE5/environments/threejs_env/` provides a lightweight browser-based environment that speaks the exact same Redis interface as the UE5/AirSim pipeline: RGB images, part-level segmentation, LiDAR point clouds, pose truth, exposure control, and the stress-injection switches (target spin, actuation noise, thruster fault, LiDAR dropout, exposure disturbance). `host.py`, tools, and skills run unmodified against it.
