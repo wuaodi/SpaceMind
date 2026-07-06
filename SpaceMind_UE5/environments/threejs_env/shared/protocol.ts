@@ -36,7 +36,7 @@ export type SatelliteModelConfig = {
   max_diameter_m: number;
 };
 
-// 退化注入开关，与 fly_redis.py 的 CLI 一一对应（E3N/E3F/E4L/E4E）
+// Degradation injection switches, one-to-one with the fly_redis.py CLI (E3N/E3F/E4L/E4E)
 export type InjectionConfig = {
   fault_axis: "" | "dx" | "dy" | "dz";
   fault_scale: number;
@@ -162,7 +162,8 @@ export type ReadyMessage = {
   type: "ready";
 };
 
-// 浏览器加载 FBX 后回传：目标体坐标系下的表面采样点（展平的 xyz 序列）与包围半径
+// Sent by the browser after the FBX loads: surface samples in the target body frame
+// (flattened xyz sequence) and the bounding radius
 export type ModelInfoMessage = {
   type: "model_info";
   target_name: string;

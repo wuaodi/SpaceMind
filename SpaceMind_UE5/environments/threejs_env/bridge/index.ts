@@ -1,24 +1,24 @@
-// 启动:
-//   1) 先启动 Redis
-//   2) 进入 threejs_env 后执行: cmd /c npm install
-//   3) 后端桥接: cmd /c npm run dev:bridge
-//   4) 浏览器前端: cmd /c npm run dev:app
-//   5) 打开 http://127.0.0.1:5173 ，然后照常运行 host.py
+// Usage:
+//   1) Start Redis first
+//   2) In the threejs_env directory run: cmd /c npm install
+//   3) Backend bridge: cmd /c npm run dev:bridge
+//   4) Browser frontend: cmd /c npm run dev:app
+//   5) Open http://127.0.0.1:5173 , then run host.py as usual
 //
-// CLI 覆盖参数（与 fly_redis.py 对齐，通常由 launch_env.py 转发）:
-//   --satellite CAPSTONE            目标星（BioSentinel/CAPSTONE/Huygens/IBEX/New_Horizons）
-//   --init_x -11 --init_y 0 --init_z 0 --init_yaw 0    服务星初始位姿
-//   --spin_deg_s 0.5                目标自旋角速率（E1 旋转目标）
-//   --noise --noise_pos 0.1 --noise_att 0.02           E3N 执行噪声
-//   --fault_axis dy --fault_scale 0.5                  E3F 推力故障
-//   --lidar_dropout 0.3                                E4L LiDAR 间歇失效
-//   --exposure_disturb_step 3 --exposure_disturb_value -3   E4E 曝光扰动
+// CLI overrides (aligned with fly_redis.py, usually forwarded by launch_env.py):
+//   --satellite CAPSTONE            target satellite (BioSentinel/CAPSTONE/Huygens/IBEX/New_Horizons)
+//   --init_x -11 --init_y 0 --init_z 0 --init_yaw 0    servicer initial pose
+//   --spin_deg_s 0.5                target spin rate (E1 spinning target)
+//   --noise --noise_pos 0.1 --noise_att 0.02           E3N actuation noise
+//   --fault_axis dy --fault_scale 0.5                  E3F thruster fault
+//   --lidar_dropout 0.3                                E4L intermittent LiDAR dropout
+//   --exposure_disturb_step 3 --exposure_disturb_value -3   E4E exposure disturbance
 //
-// 说明:
-//   这个文件负责三件事:
-//   - 订阅现有 Redis 控制 topic，驱动仿真内核
-//   - 向浏览器请求渲染，并回写 latest_image_data / latest_pose_truth / latest_lidar_data
-//   - 接收浏览器回传的 FBX 模型表面采样点，供 LiDAR 生成
+// Overview:
+//   This file is responsible for three things:
+//   - Subscribing to the existing Redis control topics and driving the simulation core
+//   - Requesting renders from the browser and writing back latest_image_data / latest_pose_truth / latest_lidar_data
+//   - Receiving FBX surface sample points from the browser for LiDAR generation
 
 import fs from "node:fs";
 import path from "node:path";
@@ -73,7 +73,7 @@ function hasCliFlag(name: string): boolean {
   return process.argv.includes(`--${name}`);
 }
 
-// 把 CLI 参数覆盖到场景配置上，语义与 fly_redis.py 一致
+// Apply CLI overrides onto the scene config, matching fly_redis.py semantics
 function applyCliOverrides(config: SceneConfig): SceneConfig {
   const satellite = parseCliValue("satellite");
   if (satellite) {
@@ -139,7 +139,7 @@ let browserSocket: import("ws").WebSocket | null = null;
 const pendingCaptures = new Map<string, PendingCapture>();
 let captureInFlight = false;
 let queuedCaptureReason = "";
-// E4E：第 N 条 pose_change 后注入一次曝光突变
+// E4E: inject a one-shot exposure jump after the N-th pose_change
 let poseChangeCount = 0;
 let exposureDisturbFired = false;
 

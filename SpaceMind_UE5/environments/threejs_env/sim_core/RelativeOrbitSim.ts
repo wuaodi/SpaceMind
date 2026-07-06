@@ -1,12 +1,15 @@
-// 启动:
+// Usage:
 //   cmd /c npm install
 //   cmd /c npm run dev:bridge
-// 说明:
-//   环境的权威仿真内核。与 UE/AirSim 版 fly_redis.py 行为对齐：
-//   - 无轨道动力学，位姿指令即位移（dx/dy/dz 直接叠加，无漂移）
-//   - 目标星可按固定角速率自旋（对应 E1 旋转目标场景）
-//   - LiDAR 点云从浏览器回传的 FBX 模型表面采样点生成，相机系 + 视场裁剪
-//   - 支持退化注入：执行噪声 E3N、推力故障 E3F、LiDAR 间歇失效 E4L
+// Overview:
+//   The authoritative simulation core of the environment, aligned with the
+//   UE/AirSim fly_redis.py behavior:
+//   - No orbital dynamics; pose commands are displacements (dx/dy/dz applied directly, no drift)
+//   - The target satellite can spin at a fixed rate (E1 spinning-target scenario)
+//   - LiDAR point clouds are generated from FBX surface samples sent back by the
+//     browser, expressed in the camera frame with field-of-view culling
+//   - Supports degradation injection: actuation noise E3N, thruster fault E3F,
+//     intermittent LiDAR dropout E4L
 
 import fs from "node:fs";
 import path from "node:path";
@@ -58,7 +61,8 @@ export class RelativeOrbitSim {
   private readonly hiddenTruthLogPath: string;
   private readonly servicerRadiusM: number;
   private readonly viewpointHoldCounters = new Map<string, number>();
-  // 目标体坐标系下的模型表面采样点，浏览器加载 FBX 后回传；未回传前用球面近似
+  // Model surface samples in the target body frame, sent back by the browser after
+  // the FBX loads; approximated by a sphere until then
   private targetSurfacePointsBody: Vec3[];
   private targetRadiusM: number;
   private state: SimState;
@@ -98,7 +102,7 @@ export class RelativeOrbitSim {
     this.servicerRadiusM = this.boxRadius(sceneConfig.servicer.body_size_m);
   }
 
-  // 无动力学：只推进时间和目标自旋，服务星位姿完全由指令决定
+  // No dynamics: only advance time and target spin; the servicer pose is fully command-driven
   public step(dt: number): void {
     const spinRad = (this.sceneConfig.target.spin_deg_s * Math.PI) / 180;
     if (spinRad !== 0) {
@@ -141,7 +145,8 @@ export class RelativeOrbitSim {
     this.updateCollisionState();
   }
 
-  // 指令即位移：体坐标系增量直接转世界系叠加，无残余速度
+  // Command equals displacement: body-frame deltas are rotated to the world frame
+  // and applied directly, with no residual velocity
   public applyDeltaPose(command: DeltaPoseCommand): void {
     const injected = this.injectFault(this.injectNoise(command));
     const deltaBody = vec3(injected.dx ?? 0, injected.dy ?? 0, injected.dz ?? 0);
@@ -201,7 +206,8 @@ export class RelativeOrbitSim {
     return { ...pose, timestamp: timestampNs() };
   }
 
-  // 相机系点云：模型表面点 -> 目标姿态旋转 -> 世界系 -> 相机系，60°x45° 视场裁剪
+  // Camera-frame point cloud: model surface points -> target attitude rotation ->
+  // world frame -> camera frame, with 60°x45° field-of-view culling
   public buildLidarMessage(): LidarMessage {
     const dropout = this.sceneConfig.injection.lidar_dropout;
     if (dropout > 0 && Math.random() < dropout) {
@@ -287,7 +293,7 @@ export class RelativeOrbitSim {
     }
   }
 
-  // E3N 执行噪声：对指令增量叠加高斯噪声
+  // E3N actuation noise: add Gaussian noise to command deltas
   private injectNoise(command: DeltaPoseCommand): DeltaPoseCommand {
     if (!this.sceneConfig.noise.enabled) {
       return command;
@@ -303,7 +309,7 @@ export class RelativeOrbitSim {
     };
   }
 
-  // E3F 推力故障：指定轴的平移只执行 fault_scale 倍
+  // E3F thruster fault: translation on the specified axis only executes at fault_scale
   private injectFault(command: DeltaPoseCommand): DeltaPoseCommand {
     const axis = this.sceneConfig.injection.fault_axis;
     if (!axis) {
@@ -387,7 +393,7 @@ export class RelativeOrbitSim {
   }
 }
 
-// FBX 未加载完成前的占位：按包围球均匀采样
+// Placeholder before the FBX finishes loading: uniform samples on the bounding sphere
 function buildSphereSurfacePoints(radius: number, count = 300): Vec3[] {
   const points: Vec3[] = [];
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));

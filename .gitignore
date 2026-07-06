@@ -14,3 +14,4 @@ _tmp/
 .DS_Store
 tta_d2_*/
 phase_b_done.txt
+SpaceMind_UE5/environments/threejs_env/verify_*.png

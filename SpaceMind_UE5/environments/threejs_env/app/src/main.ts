@@ -1,12 +1,13 @@
-// 启动:
-//   1) 在 threejs_env 目录执行: cmd /c npm install
-//   2) 启动前端: cmd /c npm run dev:app
-//   3) 保持本页面打开，桥接后端会通过 WebSocket 请求渲染和截图
+// Usage:
+//   1) In the threejs_env directory run: cmd /c npm install
+//   2) Start the frontend: cmd /c npm run dev:app
+//   3) Keep this page open; the bridge backend requests renders and captures over WebSocket.
 //
-// 说明:
-//   这个页面负责太空场景渲染：加载目标星 FBX 模型（按真实最大直径缩放），
-//   在收到 capture_request 时渲染 RGB / Segmentation 并回传；
-//   模型加载完成后对表面均匀采样，把体坐标系点云回传给 bridge 供 LiDAR 使用。
+// Overview:
+//   This page renders the space scene: it loads the target satellite FBX model
+//   (scaled to its real maximum diameter), renders RGB / segmentation frames on
+//   capture_request, and after the model loads it uniformly samples the surface
+//   and sends the body-frame point cloud back to the bridge for LiDAR generation.
 
 import "./styles.css";
 import * as THREE from "three";
@@ -40,12 +41,14 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color("#000000");
 
 const overviewCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 2000);
-overviewCamera.position.set(-12, 12, 8);
+// Keep the overview camera on the sunlit side (sun at (-30,-20,-15)); otherwise it
+// faces the shadowed side of the target and textures are flattened by ambient light.
+overviewCamera.position.set(-14, -10, -7);
 overviewCamera.lookAt(0, 0, 0);
 
 const sensorCamera = new THREE.PerspectiveCamera(60, 640 / 480, 0.1, 500);
 
-// 太空光照：太阳方向光为主，弱环境光保底
+// Space lighting: directional sunlight as the key light, weak ambient as fill
 scene.add(new THREE.AmbientLight(0xffffff, 0.35));
 const sun = new THREE.DirectionalLight(0xffffff, 3.0);
 sun.position.set(-30, -20, -15);
@@ -55,7 +58,7 @@ const starGeometry = new THREE.BufferGeometry();
 const starPositions: number[] = [];
 const starSizes: number[] = [];
 for (let i = 0; i < 2500; i += 1) {
-  // 星点分布在远球壳上，避免出现在目标附近
+  // Distribute stars on a distant spherical shell so none appear near the target
   const radius = 400 + Math.random() * 400;
   const theta = Math.random() * Math.PI * 2;
   const phi = Math.acos(2 * Math.random() - 1);
@@ -114,7 +117,7 @@ function buildServicer(config: SceneConfig) {
   servicerGroup.add(cameraMarker);
 }
 
-// 对模型每个 mesh 表面均匀采样，返回体坐标系展平点序列
+// Uniformly sample the surface of each mesh; returns a flattened body-frame point list
 function sampleModelSurface(meshes: THREE.Mesh[], totalPoints: number): number[] {
   if (meshes.length === 0) return [];
   const perMesh = Math.max(20, Math.ceil(totalPoints / meshes.length));
@@ -145,7 +148,7 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
   loadedModelUrl = modelUrl;
 
   const loader = new FBXLoader();
-  statusEl.textContent = `正在加载模型: ${targetName} ...`;
+  statusEl.textContent = `Loading model: ${targetName} ...`;
   loader.load(
     modelUrl,
     (model) => {
@@ -156,7 +159,7 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
       targetReferencePoints.length = 0;
       segmentationMaterials.clear();
 
-      // 按真实最大直径缩放并把包围盒中心移到原点
+      // Scale to the real maximum diameter and move the bounding-box center to the origin
       const rawBox = new THREE.Box3().setFromObject(model);
       const rawSize = rawBox.getSize(new THREE.Vector3());
       const rawMax = Math.max(rawSize.x, rawSize.y, rawSize.z);
@@ -185,7 +188,7 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
         partIndex += 1;
       });
 
-      // 包围盒角点用于可见性度量
+      // Bounding-box corners are used for the visibility metric
       const finalBox = new THREE.Box3().setFromObject(targetGroup);
       for (const sx of [finalBox.min.x, finalBox.max.x]) {
         for (const sy of [finalBox.min.y, finalBox.max.y]) {
@@ -195,7 +198,8 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
         }
       }
 
-      // 表面采样点回传 bridge（此时 targetGroup 位于原点且无旋转，世界系即体坐标系）
+      // Send surface samples back to the bridge (targetGroup is at the origin with no
+      // rotation here, so world frame equals body frame)
       const surfacePoints = sampleModelSurface(targetMeshes, 600);
       const boundingRadius = finalBox.getSize(new THREE.Vector3()).length() / 2;
       sendMessage({
@@ -206,14 +210,14 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
         part_names: partNames,
       });
 
-      statusEl.textContent = `模型已加载: ${targetName} (${partNames.length} parts)`;
+      statusEl.textContent = `Model loaded: ${targetName} (${partNames.length} parts)`;
       if (latestState) {
         applyRenderState(latestState);
       }
     },
     undefined,
     (error) => {
-      statusEl.textContent = `模型加载失败: ${targetName}`;
+      statusEl.textContent = `Model load failed: ${targetName}`;
       sendMessage({ type: "error", message: `FBX load failed for ${modelUrl}: ${String(error)}` });
     },
   );
@@ -222,10 +226,14 @@ function loadTargetModel(modelUrl: string, maxDiameterM: number, targetName: str
 function applyBodyTransform(object: THREE.Object3D, position: Vec3, attitude: { pitch: number; roll: number; yaw: number }) {
   const axes = bodyAxesInWorld(attitude);
   object.position.set(position.x, position.y, position.z);
-  const right = new THREE.Vector3(axes.right.x, axes.right.y, axes.right.z);
-  const up = new THREE.Vector3(axes.up.x, axes.up.y, axes.up.z);
+  // Body frame: x forward, y right, z down (right-handed). The columns are the body
+  // axes expressed in the world frame, matching rotationMatrixFromEuler in shared/math.ts.
+  // Do not pass a left-handed basis (e.g. right/up/forward): makeBasis would produce a
+  // reflection matrix and the extracted rotation would be wrong.
   const forward = new THREE.Vector3(axes.forward.x, axes.forward.y, axes.forward.z);
-  const basis = new THREE.Matrix4().makeBasis(right, up, forward);
+  const right = new THREE.Vector3(axes.right.x, axes.right.y, axes.right.z);
+  const down = new THREE.Vector3(axes.down.x, axes.down.y, axes.down.z);
+  const basis = new THREE.Matrix4().makeBasis(forward, right, down);
   object.setRotationFromMatrix(basis);
 }
 
@@ -284,7 +292,7 @@ function projectTargetMetrics(width: number, height: number) {
   };
 }
 
-// 部件级分割：每个子 mesh 换成纯色材质渲染一帧
+// Part-level segmentation: render one frame with each sub-mesh in a solid color
 function renderSegmentationPass() {
   const originalMaterials = new Map<THREE.Mesh, THREE.Material | THREE.Material[]>();
   for (const mesh of targetMeshes) {
@@ -342,13 +350,13 @@ function updateTelemetry() {
   const target = latestState.target.position_world_m;
   const relative = sub(target, servicer);
   telemetryEl.textContent = [
-    `场景: ${latestState.scene_name}`,
-    `目标: ${latestState.target_name}`,
-    `位置(x,y,z): ${servicer.x.toFixed(2)}, ${servicer.y.toFixed(2)}, ${servicer.z.toFixed(2)} m`,
-    `姿态(p,r,y): ${latestState.servicer.attitude_rpy_rad.pitch.toFixed(2)}, ${latestState.servicer.attitude_rpy_rad.roll.toFixed(2)}, ${latestState.servicer.attitude_rpy_rad.yaw.toFixed(2)} rad`,
-    `相对向量: ${relative.x.toFixed(2)}, ${relative.y.toFixed(2)}, ${relative.z.toFixed(2)} m`,
-    `距离: ${norm(relative).toFixed(2)} m`,
-    `曝光: ${latestState.exposure_value.toFixed(2)}`
+    `Scene: ${latestState.scene_name}`,
+    `Target: ${latestState.target_name}`,
+    `Position(x,y,z): ${servicer.x.toFixed(2)}, ${servicer.y.toFixed(2)}, ${servicer.z.toFixed(2)} m`,
+    `Attitude(p,r,y): ${latestState.servicer.attitude_rpy_rad.pitch.toFixed(2)}, ${latestState.servicer.attitude_rpy_rad.roll.toFixed(2)}, ${latestState.servicer.attitude_rpy_rad.yaw.toFixed(2)} rad`,
+    `Relative vector: ${relative.x.toFixed(2)}, ${relative.y.toFixed(2)}, ${relative.z.toFixed(2)} m`,
+    `Distance: ${norm(relative).toFixed(2)} m`,
+    `Exposure: ${latestState.exposure_value.toFixed(2)}`
   ].join("\n");
 }
 
@@ -374,12 +382,12 @@ function sendMessage(message: AppToBridgeMessage) {
 
 ws = new WebSocket("ws://127.0.0.1:8765");
 ws.addEventListener("open", () => {
-  statusEl.textContent = "已连接桥接后端";
+  statusEl.textContent = "Connected to bridge backend";
   sendMessage({ type: "ready" });
 });
 
 ws.addEventListener("close", () => {
-  statusEl.textContent = "桥接后端已断开";
+  statusEl.textContent = "Bridge backend disconnected";
 });
 
 ws.addEventListener("message", (event) => {
@@ -387,7 +395,7 @@ ws.addEventListener("message", (event) => {
 
   if (message.type === "scene_init") {
     buildServicer(message.scene_config);
-    statusEl.textContent = `场景已加载: ${message.scene_config.scene_name}`;
+    statusEl.textContent = `Scene loaded: ${message.scene_config.scene_name}`;
     return;
   }
 
@@ -404,7 +412,7 @@ ws.addEventListener("message", (event) => {
   }
 
   if (message.type === "error") {
-    statusEl.textContent = `桥接错误: ${message.message}`;
+    statusEl.textContent = `Bridge error: ${message.message}`;
   }
 });
 
