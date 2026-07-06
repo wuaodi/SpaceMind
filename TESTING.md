@@ -118,6 +118,19 @@ Reference per-run results from the paper's challenge campaign are provided in `S
 - Model call errors: check the API key and base URL in `SpaceMind_UE5/.env`.
 - Port conflicts: the environment uses 4173 (HTTP), 8765 (WebSocket), 6379 (Redis); pass `--http-port` / `--ws-port` to change the first two.
 
+### Render check without Redis
+
+To inspect the renderer alone (no Redis, no agent), from `threejs_env/` start the dev server and the fake bridge in two terminals:
+
+```bash
+npm run dev:app        # frontend at http://127.0.0.1:5173
+node fake_bridge.mjs   # pushes scene state over WebSocket and saves one capture to verify_rgb.png / verify_seg.png
+```
+
+Open `http://127.0.0.1:5173` to see the scene from the overview camera. The satellite should show its textures and the orange cone on the servicer marks the onboard camera boresight (body +X, where the sensor camera looks).
+
+To check whether a satellite model's embedded textures load correctly, open the diagnostic page `http://127.0.0.1:5173/texture_test.html?model=CAPSTONE` (any name from `scenes/default_scene.json`); it prints the texture status of every material.
+
 ## Notes
 
 - The Three.js environment mirrors the UE5/AirSim Redis interface exactly (images, part-level segmentation, LiDAR, pose truth, exposure, stress injection), so `host.py`, tools, and skills run unmodified. Rendering and geometry are simplified, so the numbers in the paper, which were obtained in UE5, are not expected to match exactly.

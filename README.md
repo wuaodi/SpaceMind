@@ -18,6 +18,11 @@
   <img src="static/images/teaser.png" width="100%"/>
 </p>
 
+## News
+
+- **[Jul 2026]** The bundled [Three.js environment](SpaceMind_UE5/environments/threejs_env/) now supports end-to-end agent testing out of the box — no UE5 assets required. Follow [TESTING.md](TESTING.md) to run the full stack on a normal PC. Contributions that extend this environment (more satellites, sensors, dynamics, tasks) are very welcome!
+- **[2025]** The conference version was accepted at the IAA Conference on AI in and for Space (SPAICE 2025).
+
 ## Overview
 
 SpaceMind is a modular and self-evolving vision-language model (VLM) agent framework for autonomous on-orbit servicing. It uses a VLM as a decision-control hub that perceives the environment through visual sensors, reasons about the current situation, and issues motion and sensor-control commands.
